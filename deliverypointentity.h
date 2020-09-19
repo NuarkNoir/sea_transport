@@ -7,12 +7,15 @@
 #include <vector>
 
 
+class CargoEntity;
+class StorageEntity;
 class DeliveryPointEntity
 {
     QString _title;
     std::vector<StorageEntity> _storage;
 
 public:
+    DeliveryPointEntity();
     DeliveryPointEntity(QString title);
 };
 

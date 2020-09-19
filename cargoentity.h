@@ -6,13 +6,16 @@
 #include <QString>
 
 
+class DeliveryPointEntity;
+class StorageEntity;
 class CargoEntity
 {
     QString _cargo_id;
-    DeliveryPointEntity _destination;
+    DeliveryPointEntity *_destination;
 
 public:
-    CargoEntity(QString _cargo_id, DeliveryPointEntity _destination);
+    CargoEntity();
+    CargoEntity(QString _cargo_id, DeliveryPointEntity *_destination);
 };
 
 #endif // CARGOENTITY_H

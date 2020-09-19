@@ -5,7 +5,8 @@
 
 #include <vector>
 
-
+class DeliveryPointEntity;
+class CargoEntity;
 class StorageEntity
 {
     int _storage_id;
@@ -13,6 +14,7 @@ class StorageEntity
     std::vector<CargoEntity> _cargo;
 
 public:
+    StorageEntity();
     StorageEntity(int st_id, int mx_cap);
 };
 
