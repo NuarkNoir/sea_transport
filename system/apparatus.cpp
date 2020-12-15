@@ -2,16 +2,17 @@
 
 
 apparatus *apparatus::_instance = nullptr;
+const QString apparatus::filename = "data.bin";
 
 void apparatus::open_reading_stream() {
-    this->_bin_file = new QFile("data.bin");
+    this->_bin_file = new QFile(apparatus::filename);
     this->_bin_file->open(QIODevice::ReadOnly);
 
     stream.setDevice(_bin_file);
 }
 
 void apparatus::open_writing_stream() {
-    this->_bin_file = new QFile("data.bin");
+    this->_bin_file = new QFile(apparatus::filename);
     this->_bin_file->open(QIODevice::WriteOnly);
 
     stream.setDevice(_bin_file);
@@ -47,6 +48,10 @@ apparatus& apparatus::instance() {
     }
 
     return *apparatus::_instance;
+}
+
+bool apparatus::isFirstRun() {
+    return QFile(apparatus::filename).exists();
 }
 
 void apparatus::init() {
