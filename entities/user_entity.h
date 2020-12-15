@@ -1,6 +1,8 @@
 #ifndef USER_ENTITY_H
 #define USER_ENTITY_H
 
+#include "IEntity.h"
+
 #include <QString>
 #include <QCryptographicHash>
 
@@ -10,8 +12,7 @@ enum class UserRole {
 };
 
 
-class user_entity
-{
+class user_entity : public IEntity {
 private:
     unsigned long long _id;
     QString _login;
@@ -26,6 +27,9 @@ public:
     const QString login();
     UserRole role();
     bool verify_password(const QString &password);
+
+    void serialize(QDataStream &output);
+    void deserialize(QDataStream &input);
 };
 
 #endif // USER_ENTITY_H

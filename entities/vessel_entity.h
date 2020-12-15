@@ -1,13 +1,12 @@
 #ifndef VESSEL_ENTITY_H
 #define VESSEL_ENTITY_H
 
+#include "IEntity.h"
 #include "cargo_entity.h"
 #include "dpoint_entity.h"
 
 
-
-class vessel_entity
-{
+class vessel_entity : public IEntity {
 private:
     static unsigned long long __global_id;
 
@@ -24,6 +23,9 @@ public:
     const dpoint_entity harbor();
     unsigned int capacity();
     const QVector<cargo_entity> cargo();
+
+    void serialize(QDataStream &output);
+    void deserialize(QDataStream &input);
 };
 
 #endif // VESSEL_ENTITY_H

@@ -19,3 +19,11 @@ QString cargo_entity::title() {
 unsigned int cargo_entity::volume() {
     return this->_volume;
 }
+
+void cargo_entity::serialize(QDataStream &output) {
+    output << this->_id << this->_title << this->_volume;
+}
+
+void cargo_entity::deserialize(QDataStream &input) {
+    input >> this->_id >> this->_title >> this->_volume;
+}

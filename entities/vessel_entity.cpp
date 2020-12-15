@@ -22,3 +22,11 @@ unsigned int vessel_entity::capacity() {
 const QVector<cargo_entity> vessel_entity::cargo() {
     return this->_cargo;
 }
+
+void vessel_entity::serialize(QDataStream &output) {
+    output << this->_id << this->_harbor << this->_capacity << this->_cargo;
+}
+
+void vessel_entity::deserialize(QDataStream &input) {
+    input >> this->_id >> this->_harbor >> this->_capacity >> this->_cargo;
+}

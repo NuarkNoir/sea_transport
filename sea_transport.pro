@@ -26,6 +26,8 @@ HEADERS += \
     authwindow.h \
     cargoeditdialog.h \
     deliverypointeditdialog.h \
+    entities/IEntity.h \
+    entities/ISerializable.h \
     entities/cargo_entity.h \
     entities/dpoint_entity.h \
     entities/storage_entity.h \

@@ -1,13 +1,14 @@
 #ifndef DPOINT_ENTITY_H
 #define DPOINT_ENTITY_H
 
+#include "IEntity.h"
+
 #include <QString>
 #include <QVector>
 #include <QCryptographicHash>
 
 
-class dpoint_entity
-{
+class dpoint_entity : public IEntity {
 private:
     unsigned long long _id;
     QString _title;
@@ -20,6 +21,9 @@ public:
     unsigned long long id();
     QString title();
     const QVector<unsigned long long> storages_ids();
+
+    void serialize(QDataStream &output);
+    void deserialize(QDataStream &input);
 };
 
 #endif // DPOINT_ENTITY_H

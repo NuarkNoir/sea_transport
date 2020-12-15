@@ -1,14 +1,14 @@
 #ifndef STORAGE_ENTITY_H
 #define STORAGE_ENTITY_H
 
+#include "IEntity.h"
 #include "cargo_entity.h"
 
 #include <QVector>
 #include <QCryptographicHash>
 
 
-class storage_entity
-{
+class storage_entity : public IEntity {
 private:
     static unsigned long long __global_id;
 
@@ -23,6 +23,9 @@ public:
     unsigned long long id();
     unsigned int capacity();
     const QVector<cargo_entity> cargo();
+
+    void serialize(QDataStream &output);
+    void deserialize(QDataStream &input);
 };
 
 #endif // STORAGE_ENTITY_H

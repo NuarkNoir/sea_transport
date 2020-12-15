@@ -19,3 +19,11 @@ QString dpoint_entity::title() {
 const QVector<unsigned long long> dpoint_entity::storages_ids() {
     return this->_storages_ids;
 }
+
+void dpoint_entity::serialize(QDataStream &output) {
+    output << this->_id << this->_title << this->_storages_ids;
+}
+
+void dpoint_entity::deserialize(QDataStream &input) {
+    input >> this->_id >> this->_title >> this->_storages_ids;
+}

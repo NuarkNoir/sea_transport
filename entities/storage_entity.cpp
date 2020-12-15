@@ -19,3 +19,11 @@ unsigned int storage_entity::capacity() {
 const QVector<cargo_entity> storage_entity::cargo() {
     return this->_cargo;
 }
+
+void storage_entity::serialize(QDataStream &output) {
+    output << this->_id << this->_capacity << this->_cargo;
+}
+
+void storage_entity::deserialize(QDataStream &input) {
+    input >> this->_id >> this->_capacity >> this->_cargo;
+}
