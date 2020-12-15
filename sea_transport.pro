@@ -12,6 +12,7 @@ SOURCES += \
     authwindow.cpp \
     cargoeditdialog.cpp \
     deliverypointeditdialog.cpp \
+    entities/cargo_entity.cpp \
     main.cpp \
     storageeditdialog.cpp \
     usereditdialog.cpp \
@@ -21,6 +22,7 @@ HEADERS += \
     authwindow.h \
     cargoeditdialog.h \
     deliverypointeditdialog.h \
+    entities/cargo_entity.h \
     storageeditdialog.h \
     usereditdialog.h \
     vesseleditdialog.h
