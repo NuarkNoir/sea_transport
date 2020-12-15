@@ -19,6 +19,7 @@ SOURCES += \
     entities/vessel_entity.cpp \
     main.cpp \
     storageeditdialog.cpp \
+    system/apparatus.cpp \
     usereditdialog.cpp \
     vesseleditdialog.cpp
 
@@ -34,6 +35,7 @@ HEADERS += \
     entities/user_entity.h \
     entities/vessel_entity.h \
     storageeditdialog.h \
+    system/apparatus.h \
     usereditdialog.h \
     vesseleditdialog.h
 
