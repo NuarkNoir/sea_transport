@@ -39,6 +39,9 @@ public:
     ~apparatus();
 
     bool isFirstRun();
+    void generate_empty_data();
+    const auth_system& get_auth_subsystem();
+    const object_system& get_object_subsystem();
 
     static apparatus& instance();
     static void init();

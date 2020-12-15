@@ -34,8 +34,6 @@ apparatus::apparatus() {
 }
 
 apparatus::~apparatus() {
-    this->shutdown();
-
     if (this->_bin_file) {
         this->_bin_file->flush();
         this->_bin_file->close();
@@ -54,6 +52,13 @@ apparatus& apparatus::instance() {
 
 bool apparatus::isFirstRun() {
     return QFile(apparatus::filename).exists();
+}
+
+void apparatus::generate_empty_data() {
+    this->open_writing_stream();
+    this->writeGIDS();
+    this->serialize_data();
+    this->close_stream();
 }
 
 const auth_system& apparatus::get_auth_subsystem() {
