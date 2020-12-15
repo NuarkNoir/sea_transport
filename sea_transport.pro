@@ -14,6 +14,7 @@ SOURCES += \
     deliverypointeditdialog.cpp \
     entities/cargo_entity.cpp \
     entities/dpoint_entity.cpp \
+    entities/storage_entity.cpp \
     main.cpp \
     storageeditdialog.cpp \
     usereditdialog.cpp \
@@ -25,6 +26,7 @@ HEADERS += \
     deliverypointeditdialog.h \
     entities/cargo_entity.h \
     entities/dpoint_entity.h \
+    entities/storage_entity.h \
     storageeditdialog.h \
     usereditdialog.h \
     vesseleditdialog.h
