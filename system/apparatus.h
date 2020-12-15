@@ -1,6 +1,9 @@
 #ifndef APPARATUS_H
 #define APPARATUS_H
 
+#include "auth_system.h"
+#include "object_system.h"
+
 #include <QString>
 #include <QFile>
 #include <QDataStream>
@@ -17,6 +20,9 @@ private:
 
     QFile *_bin_file;
     QDataStream stream;
+
+    auth_system _auth_system;
+    object_system _object_system;
 
     void open_reading_stream();
     void open_writing_stream();

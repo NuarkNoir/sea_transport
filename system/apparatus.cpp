@@ -34,6 +34,8 @@ apparatus::apparatus() {
 }
 
 apparatus::~apparatus() {
+    this->shutdown();
+
     if (this->_bin_file) {
         this->_bin_file->flush();
         this->_bin_file->close();
@@ -52,6 +54,14 @@ apparatus& apparatus::instance() {
 
 bool apparatus::isFirstRun() {
     return QFile(apparatus::filename).exists();
+}
+
+const auth_system& apparatus::get_auth_subsystem() {
+    return this->_auth_system;
+}
+
+const object_system& apparatus::get_object_subsystem() {
+    return this->_object_system;
 }
 
 void apparatus::init() {
@@ -81,9 +91,11 @@ void apparatus::loadGIDS() {
 }
 
 void apparatus::serialize_data() {
-
+    this->_auth_system.init(this->stream);
+    this->_object_system.init(this->stream);
 }
 
 void apparatus::deserialize_data() {
-
+    this->_auth_system.shutdown(this->stream);
+    this->_object_system.shutdown(this->stream);
 }
