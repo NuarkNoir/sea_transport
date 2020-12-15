@@ -1,8 +1,8 @@
 #include "object_system.h"
 
 
-const dpoint_entity& object_system::get_dpoint(entity_id oid, bool &success) {
-    dpoint_entity *out;
+const dpoint_entity* object_system::get_dpoint(entity_id oid, bool &success) {
+    dpoint_entity *out = nullptr;
 
     success = false;
     for (dpoint_entity &item : this->_dpoints) {
@@ -13,7 +13,7 @@ const dpoint_entity& object_system::get_dpoint(entity_id oid, bool &success) {
         }
     }
 
-    return *out;
+    return out;
 }
 
 bool object_system::remove_dpoint(entity_id oid) {
@@ -39,8 +39,8 @@ bool object_system::add_dpoint(dpoint_entity dpoint) {
     return false;
 }
 
-const vessel_entity& object_system::get_vessel(entity_id oid, bool &success) {
-    vessel_entity *out;
+const vessel_entity* object_system::get_vessel(entity_id oid, bool &success) {
+    vessel_entity *out = nullptr;
 
     success = false;
     for (vessel_entity &item : this->_vessels) {
@@ -51,7 +51,7 @@ const vessel_entity& object_system::get_vessel(entity_id oid, bool &success) {
         }
     }
 
-    return *out;
+    return out;
 }
 
 bool object_system::remove_vessel(entity_id oid) {
