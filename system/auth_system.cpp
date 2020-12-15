@@ -1,8 +1,8 @@
 #include "auth_system.h"
 
 
-const user_entity& auth_system::get_user(const QString &login, bool &success) {
-    user_entity *out;
+const user_entity* auth_system::get_user(const QString &login, bool &success) {
+    user_entity *out = nullptr;
 
     success = false;
     for (user_entity &item : this->_users) {
@@ -13,7 +13,7 @@ const user_entity& auth_system::get_user(const QString &login, bool &success) {
         }
     }
 
-    return *out;
+    return out;
 }
 
 bool auth_system::remove_user(const QString &login) {
