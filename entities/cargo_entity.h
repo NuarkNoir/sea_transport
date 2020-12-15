@@ -15,7 +15,7 @@ private:
 
 public:
     cargo_entity() = default;
-    cargo_entity(const QString &title, int volume);
+    cargo_entity(const QString &title, unsigned int volume);
 
     unsigned long long id();
     QString title();

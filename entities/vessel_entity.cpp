@@ -24,9 +24,21 @@ const QVector<cargo_entity> vessel_entity::cargo() {
 }
 
 void vessel_entity::serialize(QDataStream &output) {
-    output << this->_id << this->_harbor << this->_capacity << this->_cargo;
+    output << this->_id;
+    this->_harbor.serialize(output);
+    output << this->_capacity << this->_cargo.size();
+    for (auto item : this->_cargo) {
+        item.serialize(output);
+    }
 }
 
 void vessel_entity::deserialize(QDataStream &input) {
-    input >> this->_id >> this->_harbor >> this->_capacity >> this->_cargo;
+    input >> this->_id;
+    this->_harbor.deserialize(input);
+    int icnt;
+    input >> this->_capacity >> icnt;
+    this->_cargo.resize(icnt);
+    for (int i = 0; i < icnt; i++) {
+        this->_cargo[i].deserialize(input);
+    }
 }
