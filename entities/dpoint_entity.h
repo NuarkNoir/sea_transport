@@ -2,6 +2,7 @@
 #define DPOINT_ENTITY_H
 
 #include "IEntity.h"
+#include "storage_entity.h"
 
 #include <QString>
 #include <QVector>
@@ -12,7 +13,7 @@ class dpoint_entity : public IEntity {
 private:
     entity_id _id;
     QString _title;
-    QVector<entity_id> _storages_ids;
+    QVector<storage_entity> _storages;
 
 public:
     dpoint_entity() = default;
@@ -20,7 +21,7 @@ public:
 
     entity_id id();
     QString title();
-    const QVector<entity_id> storages_ids();
+    const QVector<storage_entity> storages();
 
     void serialize(QDataStream &output);
     void deserialize(QDataStream &input);
