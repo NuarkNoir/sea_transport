@@ -27,6 +27,7 @@ public:
     void serialize(QDataStream &output);
     void deserialize(QDataStream &input);
     static void preloadGlobalId(entity_id gid);
+    static entity_id GID();
 };
 
 #endif // VESSEL_ENTITY_H

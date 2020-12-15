@@ -46,3 +46,7 @@ void vessel_entity::deserialize(QDataStream &input) {
 void vessel_entity::preloadGlobalId(entity_id gid) {
     vessel_entity::__global_id = gid;
 }
+
+entity_id vessel_entity::GID() {
+    return vessel_entity::__global_id;
+}

@@ -75,3 +75,7 @@ void storage_entity::deserialize(QDataStream &input) {
 void storage_entity::preloadGlobalId(entity_id gid) {
     storage_entity::__global_id = gid;
 }
+
+entity_id storage_entity::GID() {
+    return storage_entity::__global_id;
+}

@@ -30,7 +30,8 @@ public:
 
     void serialize(QDataStream &output);
     void deserialize(QDataStream &input);
-    void preloadGlobalId(entity_id gid);
+    static void preloadGlobalId(entity_id gid);
+    static entity_id GID();
 };
 
 #endif // STORAGE_ENTITY_H
