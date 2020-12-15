@@ -9,7 +9,7 @@
 
 class cargo_entity : public IEntity {
 private:
-    unsigned long long _id;
+    entity_id _id;
     QString _title;
     unsigned int _volume;
 
@@ -17,7 +17,7 @@ public:
     cargo_entity() = default;
     cargo_entity(const QString &title, unsigned int volume);
 
-    unsigned long long id();
+    entity_id id();
     QString title();
     unsigned int volume();
 

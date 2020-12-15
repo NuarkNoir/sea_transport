@@ -1,13 +1,13 @@
 #include "vessel_entity.h"
 
 
-unsigned long long vessel_entity::__global_id = 0;
+entity_id vessel_entity::__global_id = 0;
 
 vessel_entity::vessel_entity(const dpoint_entity &harbor, unsigned int capacity) : _harbor(harbor), _capacity(capacity) {
     this->_id = ++vessel_entity::__global_id;
 }
 
-unsigned long long vessel_entity::id() {
+entity_id vessel_entity::id() {
     return this->_id;
 }
 
@@ -41,4 +41,8 @@ void vessel_entity::deserialize(QDataStream &input) {
     for (int i = 0; i < icnt; i++) {
         this->_cargo[i].deserialize(input);
     }
+}
+
+void vessel_entity::preloadGlobalId(entity_id gid) {
+    vessel_entity::__global_id = gid;
 }

@@ -8,7 +8,7 @@ cargo_entity::cargo_entity(const QString &title, unsigned int volume) : _title(t
     }
 }
 
-unsigned long long cargo_entity::id() {
+entity_id cargo_entity::id() {
     return this->_id;
 }
 

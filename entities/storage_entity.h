@@ -10,9 +10,9 @@
 
 class storage_entity : public IEntity {
 private:
-    static unsigned long long __global_id;
+    static entity_id __global_id;
 
-    unsigned long long _id;
+    entity_id _id;
     unsigned int _capacity;
     QVector<cargo_entity> _cargo;
 
@@ -20,16 +20,17 @@ public:
     storage_entity() = default;
     storage_entity(unsigned int capacity);
 
-    unsigned long long id();
+    entity_id id();
     unsigned int capacity();
     const QVector<cargo_entity> cargo();
 
     void add_cargo(cargo_entity object, bool &success);
-    cargo_entity get_cargo(unsigned long long oid, bool &found);
-    void withdraw_cargo(unsigned long long oid, bool &success);
+    cargo_entity get_cargo(entity_id oid, bool &found);
+    void withdraw_cargo(entity_id oid, bool &success);
 
     void serialize(QDataStream &output);
     void deserialize(QDataStream &input);
+    void preloadGlobalId(entity_id gid);
 };
 
 #endif // STORAGE_ENTITY_H

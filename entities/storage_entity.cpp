@@ -1,14 +1,14 @@
 #include "storage_entity.h"
 
 
-unsigned long long storage_entity::__global_id = 0;
+entity_id storage_entity::__global_id = 0;
 
 storage_entity::storage_entity(unsigned int capacity) : _capacity(capacity) {
     this->_id = ++storage_entity::__global_id;
 }
 
 
-unsigned long long storage_entity::id() {
+entity_id storage_entity::id() {
     return this->_id;
 }
 
@@ -28,7 +28,7 @@ void storage_entity::add_cargo(cargo_entity object, bool &success) {
     }
 }
 
-cargo_entity storage_entity::get_cargo(unsigned long long oid, bool &found) {
+cargo_entity storage_entity::get_cargo(entity_id oid, bool &found) {
     cargo_entity ent;
     found = false;
 
@@ -43,7 +43,7 @@ cargo_entity storage_entity::get_cargo(unsigned long long oid, bool &found) {
     return ent;
 }
 
-void storage_entity::withdraw_cargo(unsigned long long oid, bool &success) {
+void storage_entity::withdraw_cargo(entity_id oid, bool &success) {
     success = false;
     auto vit = this->_cargo.begin();
     for (; vit != this->_cargo.end(); vit++) {
@@ -70,4 +70,8 @@ void storage_entity::deserialize(QDataStream &input) {
     for (int i = 0; i < icnt; i++) {
         this->_cargo[i].deserialize(input);
     }
+}
+
+void storage_entity::preloadGlobalId(entity_id gid) {
+    storage_entity::__global_id = gid;
 }

@@ -4,9 +4,11 @@
 #include "ISerializable.h"
 
 
+typedef unsigned long long entity_id;
+
 class IEntity : public ISerializable {
 public:
-   virtual unsigned long long id() = 0;
+   virtual entity_id id() = 0;
 };
 
 #endif // IENTITY_H

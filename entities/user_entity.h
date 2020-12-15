@@ -14,7 +14,7 @@ enum class UserRole {
 
 class user_entity : public IEntity {
 private:
-    unsigned long long _id;
+    entity_id _id;
     QString _login;
     UserRole _role;
     QByteArray _pwd_hash;
@@ -23,7 +23,7 @@ public:
     user_entity() = default;
     user_entity(const QString &login, const QString &password, UserRole role);
 
-    unsigned long long id();
+    entity_id id();
     const QString login();
     UserRole role();
     bool verify_password(const QString &password);

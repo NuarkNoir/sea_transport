@@ -10,17 +10,17 @@
 
 class dpoint_entity : public IEntity {
 private:
-    unsigned long long _id;
+    entity_id _id;
     QString _title;
-    QVector<unsigned long long> _storages_ids;
+    QVector<entity_id> _storages_ids;
 
 public:
     dpoint_entity() = default;
     dpoint_entity(const QString &title);
 
-    unsigned long long id();
+    entity_id id();
     QString title();
-    const QVector<unsigned long long> storages_ids();
+    const QVector<entity_id> storages_ids();
 
     void serialize(QDataStream &output);
     void deserialize(QDataStream &input);

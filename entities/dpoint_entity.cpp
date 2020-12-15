@@ -8,7 +8,7 @@ dpoint_entity::dpoint_entity(const QString &title) : _title(title) {
     }
 }
 
-unsigned long long dpoint_entity::id() {
+entity_id dpoint_entity::id() {
     return this->_id;
 }
 
@@ -16,7 +16,7 @@ QString dpoint_entity::title() {
     return this->_title;
 }
 
-const QVector<unsigned long long> dpoint_entity::storages_ids() {
+const QVector<entity_id> dpoint_entity::storages_ids() {
     return this->_storages_ids;
 }
 
