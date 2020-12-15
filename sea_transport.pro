@@ -21,6 +21,7 @@ SOURCES += \
     storageeditdialog.cpp \
     system/apparatus.cpp \
     system/auth_system.cpp \
+    system/object_system.cpp \
     usereditdialog.cpp \
     vesseleditdialog.cpp
 
@@ -38,6 +39,7 @@ HEADERS += \
     storageeditdialog.h \
     system/apparatus.h \
     system/auth_system.h \
+    system/object_system.h \
     usereditdialog.h \
     vesseleditdialog.h
 
