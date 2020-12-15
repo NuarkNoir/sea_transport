@@ -4,20 +4,21 @@
 #include <QFile>
 #include <QDataStream>
 
+#include <entities/vessel_entity.h>
+#include <entities/storage_entity.h>
+
 
 class apparatus
 {
 private:
     static apparatus *_instance;
 
-    QFile _bin_file;
+    QFile *_bin_file;
     QDataStream stream;
 
     void open_reading_stream();
-    void close_reading_stream();
-
     void open_writing_stream();
-    void close_writing_stream();
+    void close_stream();
 
     void writeGIDS();
     void loadGIDS();
@@ -27,6 +28,7 @@ private:
 
 public:
     apparatus();
+    ~apparatus();
 
     static apparatus& instance();
     static void init();
