@@ -18,11 +18,11 @@ public:
 
     const dpoint_entity& get_dpoint(entity_id oid, bool &success);
     bool remove_dpoint(entity_id oid);
-    bool add_dpoint(const dpoint_entity &dpoint);
+    bool add_dpoint(dpoint_entity dpoint);
 
     const vessel_entity& get_vessel(entity_id oid, bool &success);
     bool remove_vessel(entity_id oid);
-    bool add_vessel(const vessel_entity &dpoint);
+    bool add_vessel(vessel_entity dpoint);
 
 
     void init(QDataStream &stream);
