@@ -11,29 +11,19 @@ CONFIG += c++11
 SOURCES += \
     authwindow.cpp \
     cargoeditdialog.cpp \
-    cargoentity.cpp \
     deliverypointeditdialog.cpp \
-    deliverypointentity.cpp \
     main.cpp \
     storageeditdialog.cpp \
-    storageentity.cpp \
     usereditdialog.cpp \
-    userentity.cpp \
-    vesseleditdialog.cpp \
-    vesselentity.cpp
+    vesseleditdialog.cpp
 
 HEADERS += \
     authwindow.h \
     cargoeditdialog.h \
-    cargoentity.h \
     deliverypointeditdialog.h \
-    deliverypointentity.h \
     storageeditdialog.h \
-    storageentity.h \
     usereditdialog.h \
-    userentity.h \
-    vesseleditdialog.h \
-    vesselentity.h
+    vesseleditdialog.h
 
 FORMS += \
     authwindow.ui \
