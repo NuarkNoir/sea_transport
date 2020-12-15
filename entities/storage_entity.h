@@ -24,6 +24,10 @@ public:
     unsigned int capacity();
     const QVector<cargo_entity> cargo();
 
+    void add_cargo(cargo_entity object, bool &success);
+    cargo_entity get_cargo(unsigned long long oid, bool &found);
+    void withdraw_cargo(unsigned long long oid, bool &success);
+
     void serialize(QDataStream &output);
     void deserialize(QDataStream &input);
 };
