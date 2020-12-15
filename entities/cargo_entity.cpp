@@ -4,7 +4,7 @@ cargo_entity::cargo_entity(const QString &title, int volume) : _title(title), _v
     this->_id = volume;
     auto hash = QCryptographicHash::hash(title.toLocal8Bit(), QCryptographicHash::Md5);
     for (auto bit : hash) {
-        this->_id |= bit;
+        this->_id += bit;
     }
 }
 
