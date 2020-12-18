@@ -20,8 +20,8 @@ public:
     storage_entity() = default;
     storage_entity(unsigned int capacity);
 
-    entity_id id();
-    unsigned int capacity();
+    entity_id id() const;
+    unsigned int capacity() const;
     const QVector<cargo_entity> cargo();
 
     void add_cargo(cargo_entity object, bool &success);

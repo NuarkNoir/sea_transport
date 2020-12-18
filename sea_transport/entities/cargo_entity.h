@@ -17,9 +17,9 @@ public:
     cargo_entity() = default;
     cargo_entity(const QString &title, unsigned int volume);
 
-    entity_id id();
-    QString title();
-    unsigned int volume();
+    entity_id id() const;
+    QString title() const;
+    unsigned int volume() const;
 
     void serialize(QDataStream &output);
     void deserialize(QDataStream &input);

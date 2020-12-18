@@ -8,11 +8,11 @@ dpoint_entity::dpoint_entity(const QString &title) : _title(title) {
     }
 }
 
-entity_id dpoint_entity::id() {
+entity_id dpoint_entity::id() const {
     return this->_id;
 }
 
-QString dpoint_entity::title() {
+QString dpoint_entity::title() const {
     return this->_title;
 }
 

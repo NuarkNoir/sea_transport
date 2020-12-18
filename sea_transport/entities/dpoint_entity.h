@@ -19,8 +19,8 @@ public:
     dpoint_entity() = default;
     dpoint_entity(const QString &title);
 
-    entity_id id();
-    QString title();
+    entity_id id() const;
+    QString title() const;
     const QVector<storage_entity> storages();
 
     void serialize(QDataStream &output);

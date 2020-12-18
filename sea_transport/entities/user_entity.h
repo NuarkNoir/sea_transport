@@ -23,9 +23,9 @@ public:
     user_entity() = default;
     user_entity(const QString &login, const QString &password, UserRole role);
 
-    entity_id id();
-    const QString login();
-    UserRole role();
+    entity_id id() const;
+    const QString login() const;
+    UserRole role() const;
     bool verify_password(const QString &password) const;
 
     void serialize(QDataStream &output);

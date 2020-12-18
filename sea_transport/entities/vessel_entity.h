@@ -19,9 +19,9 @@ public:
     vessel_entity() = default;
     vessel_entity(const dpoint_entity &harbor, unsigned int capacity);
 
-    entity_id id();
-    const dpoint_entity harbor();
-    unsigned int capacity();
+    entity_id id() const;
+    const dpoint_entity harbor() const;
+    unsigned int capacity() const;
     const QVector<cargo_entity> cargo();
 
     void serialize(QDataStream &output);
