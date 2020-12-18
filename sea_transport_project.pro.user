@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.13.3, 2020-12-18T17:36:17. -->
+<!-- Written by QtCreator 4.13.3, 2020-12-18T19:15:03. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -64,7 +64,23 @@
     <value type="bool" key="AutoTest.Framework.QtQuickTest">true</value>
     <value type="bool" key="AutoTest.Framework.QtTest">true</value>
    </valuemap>
-   <valuemap type="QVariantMap" key="AutoTest.CheckStates"/>
+   <valuemap type="QVariantMap" key="AutoTest.CheckStates">
+    <value type="Qt::CheckState" key="C:/Users/Admin/Documents/repos/sea_transport/tests/tst_tests.cpp:apparatus_auth_subsystem_check">Checked</value>
+    <value type="Qt::CheckState" key="C:/Users/Admin/Documents/repos/sea_transport/tests/tst_tests.cpp:apparatus_data_serialization">Checked</value>
+    <value type="Qt::CheckState" key="C:/Users/Admin/Documents/repos/sea_transport/tests/tst_tests.cpp:apparatus_firstrun">Checked</value>
+    <value type="Qt::CheckState" key="C:/Users/Admin/Documents/repos/sea_transport/tests/tst_tests.cpp:apparatus_object_subsystem_check">Checked</value>
+    <value type="Qt::CheckState" key="C:/Users/Admin/Documents/repos/sea_transport/tests/tst_tests.cpp:auth_password_validation">Checked</value>
+    <value type="Qt::CheckState" key="C:/Users/Admin/Documents/repos/sea_transport/tests/tst_tests.cpp:auth_user_manipulation">Checked</value>
+    <value type="Qt::CheckState" key="C:/Users/Admin/Documents/repos/sea_transport/tests/tst_tests.cpp:auth_user_query">Checked</value>
+    <value type="Qt::CheckState" key="C:/Users/Admin/Documents/repos/sea_transport/tests/tst_tests.cpp:cargo_entity_check">Checked</value>
+    <value type="Qt::CheckState" key="C:/Users/Admin/Documents/repos/sea_transport/tests/tst_tests.cpp:dpoint_entity_check">Checked</value>
+    <value type="Qt::CheckState" key="C:/Users/Admin/Documents/repos/sea_transport/tests/tst_tests.cpp:object_manipulation">Checked</value>
+    <value type="Qt::CheckState" key="C:/Users/Admin/Documents/repos/sea_transport/tests/tst_tests.cpp:object_query">Checked</value>
+    <value type="Qt::CheckState" key="C:/Users/Admin/Documents/repos/sea_transport/tests/tst_tests.cpp:storage_entity_check">Checked</value>
+    <value type="Qt::CheckState" key="C:/Users/Admin/Documents/repos/sea_transport/tests/tst_tests.cpp:tests">Checked</value>
+    <value type="Qt::CheckState" key="C:/Users/Admin/Documents/repos/sea_transport/tests/tst_tests.cpp:user_entity_check">Checked</value>
+    <value type="Qt::CheckState" key="C:/Users/Admin/Documents/repos/sea_transport/tests/tst_tests.cpp:vessel_entity_check">Checked</value>
+   </valuemap>
    <value type="int" key="AutoTest.RunAfterBuild">0</value>
    <value type="bool" key="AutoTest.UseGlobal">true</value>
    <valuemap type="QVariantMap" key="ClangTools">
@@ -320,8 +336,9 @@
     <valuelist type="QVariantList" key="CustomOutputParsers"/>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:C:/Users/Admin/Documents/repos/sea_transport_project/sea_transport/sea_transport.pro</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Admin/Documents/repos/sea_transport_project/sea_transport/sea_transport.pro</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">sea_transport2</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:C:/Users/Admin/Documents/repos/sea_transport/sea_transport/sea_transport.pro</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/Admin/Documents/repos/sea_transport/sea_transport/sea_transport.pro</value>
     <value type="QString" key="RunConfiguration.Arguments"></value>
     <value type="bool" key="RunConfiguration.Arguments.multi">false</value>
     <value type="QString" key="RunConfiguration.OverrideDebuggerStartup"></value>
