@@ -8,15 +8,15 @@ cargo_entity::cargo_entity(const QString &title, unsigned int volume) : _title(t
     }
 }
 
-entity_id cargo_entity::id() {
+entity_id cargo_entity::id() const {
     return this->_id;
 }
 
-QString cargo_entity::title() {
+QString cargo_entity::title() const {
     return this->_title;
 }
 
-unsigned int cargo_entity::volume() {
+unsigned int cargo_entity::volume() const {
     return this->_volume;
 }
 

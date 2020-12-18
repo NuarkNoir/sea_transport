@@ -4,15 +4,15 @@ user_entity::user_entity(const QString &login, const QString &password, UserRole
     this->_pwd_hash = QCryptographicHash::hash(password.toLocal8Bit(), QCryptographicHash::Sha3_256);
 }
 
-entity_id user_entity::id() {
+entity_id user_entity::id() const {
     return this->_id;
 }
 
-const QString user_entity::login() {
+const QString user_entity::login() const {
     return this->_login;
 }
 
-UserRole user_entity::role() {
+UserRole user_entity::role() const {
     return this->_role;
 }
 

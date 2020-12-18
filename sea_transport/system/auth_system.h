@@ -3,7 +3,7 @@
 
 #include<QVector>
 
-#include <entities/user_entity.h>
+#include "../entities/user_entity.h"
 
 
 class auth_system

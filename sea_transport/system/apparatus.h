@@ -4,12 +4,12 @@
 #include "auth_system.h"
 #include "object_system.h"
 
+#include "../entities/vessel_entity.h"
+#include "../entities/storage_entity.h"
+
 #include <QString>
 #include <QFile>
 #include <QDataStream>
-
-#include <entities/vessel_entity.h>
-#include <entities/storage_entity.h>
 
 
 class apparatus
@@ -24,8 +24,7 @@ private:
     auth_system _auth_system;
     object_system _object_system;
 
-    void open_reading_stream();
-    void open_writing_stream();
+    void open_stream();
     void close_stream();
 
     void writeGIDS();
@@ -43,7 +42,7 @@ public:
     const auth_system& get_auth_subsystem();
     const object_system& get_object_subsystem();
 
-    static apparatus& instance();
+    static apparatus* instance();
     static void init();
     static void shutdown();
 };

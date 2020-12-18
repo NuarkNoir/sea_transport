@@ -7,15 +7,15 @@ vessel_entity::vessel_entity(const dpoint_entity &harbor, unsigned int capacity)
     this->_id = ++vessel_entity::__global_id;
 }
 
-entity_id vessel_entity::id() {
+entity_id vessel_entity::id() const {
     return this->_id;
 }
 
-const dpoint_entity vessel_entity::harbor() {
+const dpoint_entity vessel_entity::harbor() const {
     return this->_harbor;
 }
 
-unsigned int vessel_entity::capacity() {
+unsigned int vessel_entity::capacity() const {
     return this->_capacity;
 }
 

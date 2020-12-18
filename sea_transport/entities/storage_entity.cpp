@@ -8,11 +8,11 @@ storage_entity::storage_entity(unsigned int capacity) : _capacity(capacity) {
 }
 
 
-entity_id storage_entity::id() {
+entity_id storage_entity::id() const {
     return this->_id;
 }
 
-unsigned int storage_entity::capacity() {
+unsigned int storage_entity::capacity() const {
     return this->_capacity;
 }
 

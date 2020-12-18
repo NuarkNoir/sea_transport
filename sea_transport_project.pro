@@ -1,4 +1,5 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
-    sea_transport
+    sea_transport \
+    st_test
