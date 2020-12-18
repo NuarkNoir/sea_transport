@@ -26,7 +26,7 @@ public:
     entity_id id();
     const QString login();
     UserRole role();
-    bool verify_password(const QString &password);
+    bool verify_password(const QString &password) const;
 
     void serialize(QDataStream &output);
     void deserialize(QDataStream &input);

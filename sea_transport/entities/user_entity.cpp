@@ -16,7 +16,7 @@ UserRole user_entity::role() {
     return this->_role;
 }
 
-bool user_entity::verify_password(const QString &password) {
+bool user_entity::verify_password(const QString &password) const {
     return (this->_pwd_hash == QCryptographicHash::hash(password.toLocal8Bit(), QCryptographicHash::Sha3_256));
 }
 
