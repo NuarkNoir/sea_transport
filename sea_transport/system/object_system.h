@@ -3,8 +3,8 @@
 
 #include <QVector>
 
-#include <entities/dpoint_entity.h>
-#include <entities/vessel_entity.h>
+#include "../entities/dpoint_entity.h"
+#include "../entities/vessel_entity.h"
 
 
 class object_system
