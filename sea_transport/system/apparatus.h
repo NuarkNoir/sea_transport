@@ -8,8 +8,8 @@
 #include <QFile>
 #include <QDataStream>
 
-#include <entities/vessel_entity.h>
-#include <entities/storage_entity.h>
+#include "../entities/vessel_entity.h"
+#include "../entities/storage_entity.h"
 
 
 class apparatus
