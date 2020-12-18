@@ -27,16 +27,16 @@ apparatus::~apparatus() {
     this->shutdown();
 }
 
-apparatus& apparatus::instance() {
+apparatus* apparatus::instance() {
     if (apparatus::_instance == nullptr) {
         throw std::runtime_error("System non initialized!");
     }
 
-    return *apparatus::_instance;
+    return apparatus::_instance;
 }
 
 bool apparatus::isFirstRun() {
-    return QFile().exists("first_run");
+    return QFile().exists("init");
 }
 
 void apparatus::generate_empty_data() {
@@ -57,17 +57,17 @@ const object_system& apparatus::get_object_subsystem() {
 void apparatus::init() {
     apparatus::_instance = new apparatus();
 
-    apparatus::instance().open_stream();
-    apparatus::instance().loadGIDS();
-    apparatus::instance().deserialize_data();
-    apparatus::instance().close_stream();
+    apparatus::instance()->open_stream();
+    apparatus::instance()->loadGIDS();
+    apparatus::instance()->deserialize_data();
+    apparatus::instance()->close_stream();
 }
 
 void apparatus::shutdown() {
-    apparatus::instance().open_stream();
-    apparatus::instance().writeGIDS();
-    apparatus::instance().serialize_data();
-    apparatus::instance().close_stream();
+    apparatus::instance()->open_stream();
+    apparatus::instance()->writeGIDS();
+    apparatus::instance()->serialize_data();
+    apparatus::instance()->close_stream();
 }
 
 void apparatus::writeGIDS() {
@@ -84,12 +84,12 @@ void apparatus::loadGIDS() {
 }
 
 void apparatus::serialize_data() {
-    QFile().remove("first_run");
     this->_auth_system.init(this->stream);
     this->_object_system.init(this->stream);
 }
 
 void apparatus::deserialize_data() {
+    QFile("init").open(QIODevice::ReadWrite);
     this->_auth_system.shutdown(this->stream);
     this->_object_system.shutdown(this->stream);
 }

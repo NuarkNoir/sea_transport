@@ -42,7 +42,7 @@ public:
     const auth_system& get_auth_subsystem();
     const object_system& get_object_subsystem();
 
-    static apparatus& instance();
+    static apparatus* instance();
     static void init();
     static void shutdown();
 };
