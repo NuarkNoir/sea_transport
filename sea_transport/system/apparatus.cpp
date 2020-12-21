@@ -24,7 +24,14 @@ apparatus::apparatus() {
 }
 
 apparatus::~apparatus() {
-    this->shutdown();
+
+}
+
+void apparatus::generate_lock_file() {
+    QFile init("lock");
+    init.open(QIODevice::ReadWrite);
+    init.write("lock");
+    init.close();
 }
 
 apparatus* apparatus::instance() {
@@ -36,38 +43,30 @@ apparatus* apparatus::instance() {
 }
 
 bool apparatus::isFirstRun() {
-    return QFile().exists("init");
+    return !QFile().exists("lock");
 }
 
-void apparatus::generate_empty_data() {
-    this->open_stream();
-    this->writeGIDS();
-    this->serialize_data();
-    this->close_stream();
-}
-
-const auth_system& apparatus::get_auth_subsystem() {
+auth_system& apparatus::get_auth_subsystem() {
     return this->_auth_system;
 }
 
-const object_system& apparatus::get_object_subsystem() {
+object_system& apparatus::get_object_subsystem() {
     return this->_object_system;
 }
 
 void apparatus::init() {
     apparatus::_instance = new apparatus();
 
-    apparatus::instance()->open_stream();
-    apparatus::instance()->loadGIDS();
-    apparatus::instance()->deserialize_data();
-    apparatus::instance()->close_stream();
+    apparatus::_instance->open_stream();
+    apparatus::_instance->loadGIDS();
+    apparatus::_instance->deserialize_data();
 }
 
 void apparatus::shutdown() {
-    apparatus::instance()->open_stream();
-    apparatus::instance()->writeGIDS();
-    apparatus::instance()->serialize_data();
-    apparatus::instance()->close_stream();
+    apparatus::_instance->writeGIDS();
+    apparatus::_instance->serialize_data();
+    apparatus::_instance->close_stream();
+    delete apparatus::_instance;
 }
 
 void apparatus::writeGIDS() {
@@ -84,12 +83,11 @@ void apparatus::loadGIDS() {
 }
 
 void apparatus::serialize_data() {
-    this->_auth_system.init(this->stream);
-    this->_object_system.init(this->stream);
+    this->_auth_system.serialize_data(this->stream);
+    this->_object_system.serialize_data(this->stream);
 }
 
 void apparatus::deserialize_data() {
-    QFile("init").open(QIODevice::ReadWrite);
-    this->_auth_system.shutdown(this->stream);
-    this->_object_system.shutdown(this->stream);
+    this->_auth_system.deserialize_data(this->stream);
+    this->_object_system.deserialize_data(this->stream);
 }

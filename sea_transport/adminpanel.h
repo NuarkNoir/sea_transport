@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 
+#include "viewmodels/usersviewmodel.h"
+
 #include "entities/user_entity.h"
 
 namespace Ui {
@@ -15,6 +17,8 @@ class AdminPanel : public QMainWindow
 
     user_entity user;
 
+    UsersViewModel *uvm;
+
 public:
     explicit AdminPanel(QWidget *parent = nullptr);
     ~AdminPanel();
@@ -22,6 +26,10 @@ public:
     AdminPanel& set_user(const user_entity &user);
 
 private slots:
+
+private:
+    Ui::AdminPanel *ui;
+
     void on_logout_requested();
 
     void on_vessel_add();
@@ -35,9 +43,6 @@ private slots:
 
     void on_delivery_point_add();
     void on_delivery_point_remove();
-
-private:
-    Ui::AdminPanel *ui;
 };
 
 #endif // ADMINPANEL_H

@@ -77,7 +77,15 @@ bool object_system::add_vessel(vessel_entity dpoint) {
     return false;
 }
 
-void object_system::init(QDataStream &stream) {
+const QVector<dpoint_entity> object_system::dpoints() const {
+    return this->_dpoints;
+}
+
+const QVector<vessel_entity> object_system::vessels() const {
+    return this->_vessels;
+}
+
+void object_system::deserialize_data(QDataStream &stream) {
     int dicnt;
     stream >> dicnt;
     this->_dpoints.resize(dicnt);
@@ -93,7 +101,7 @@ void object_system::init(QDataStream &stream) {
     }
 }
 
-void object_system::shutdown(QDataStream &stream) {
+void object_system::serialize_data(QDataStream &stream) {
     stream << this->_dpoints.size();
     for (auto &item : this->_dpoints) {
         item.serialize(stream);

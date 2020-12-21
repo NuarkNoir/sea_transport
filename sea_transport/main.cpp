@@ -7,13 +7,16 @@
 int main(int argc, char *argv[]) {
     QApplication a(argc, argv);
 
-    bool fr = apparatus::isFirstRun();
-
     apparatus::init();
-    AuthWindow w(nullptr, fr);
-    w.show();
-    int ecode = a.exec();
-    apparatus::shutdown();
 
-    return ecode;
+    AuthWindow w(nullptr);
+    w.show();
+
+    QObject::connect(&a, &QApplication::aboutToQuit, []() {
+        apparatus::shutdown();
+        if (apparatus::isFirstRun()) {
+            apparatus::generate_lock_file();
+        }
+    });
+    return a.exec();
 }

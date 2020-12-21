@@ -39,7 +39,11 @@ bool auth_system::register_user(const QString &login, const QString &password, U
     return false;
 }
 
-void auth_system::init(QDataStream &stream) {
+const QVector<user_entity> auth_system::users() const {
+    return this->_users;
+}
+
+void auth_system::deserialize_data(QDataStream &stream) {
     int icnt;
     stream >> icnt;
     this->_users.resize(icnt);
@@ -48,7 +52,7 @@ void auth_system::init(QDataStream &stream) {
     }
 }
 
-void auth_system::shutdown(QDataStream &stream) {
+void auth_system::serialize_data(QDataStream &stream) {
     stream << this->_users.size();
     for (auto &item : this->_users) {
         item.serialize(stream);

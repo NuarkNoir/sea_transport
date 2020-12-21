@@ -1,7 +1,7 @@
 #ifndef AUTH_SYSTEM_H
 #define AUTH_SYSTEM_H
 
-#include<QVector>
+#include <QVector>
 
 #include "../entities/user_entity.h"
 
@@ -17,8 +17,10 @@ public:
     bool remove_user(const QString &login);
     bool register_user(const QString &login, const QString &password, UserRole role);
 
-    void init(QDataStream &stream);
-    void shutdown(QDataStream &stream);
+    const QVector<user_entity> users() const;
+
+    void deserialize_data(QDataStream &stream);
+    void serialize_data(QDataStream &stream);
 };
 
 #endif // AUTH_SYSTEM_H

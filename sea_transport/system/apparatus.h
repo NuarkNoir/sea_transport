@@ -35,14 +35,15 @@ public:
     ~apparatus();
 
     void generate_empty_data();
-    const auth_system& get_auth_subsystem();
-    const object_system& get_object_subsystem();
+    auth_system& get_auth_subsystem();
+    object_system& get_object_subsystem();
 
 
     void serialize_data();
     void deserialize_data();
 
     static bool isFirstRun();
+    static void generate_lock_file();
     static apparatus* instance();
     static void init();
     static void shutdown();

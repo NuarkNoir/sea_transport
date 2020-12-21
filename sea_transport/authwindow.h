@@ -1,7 +1,7 @@
 #ifndef AUTHWINDOW_H
 #define AUTHWINDOW_H
 
-#include <system/apparatus.h>
+#include "system/apparatus.h"
 
 #include "adminpanel.h"
 
@@ -12,21 +12,17 @@ namespace Ui {
 class AuthWindow;
 }
 
-class AuthWindow : public QMainWindow
-{
+class AuthWindow : public QMainWindow {
     Q_OBJECT
-    bool firstRun;
 
 public:
-    explicit AuthWindow(QWidget *parent = nullptr, bool fr = false);
+    explicit AuthWindow(QWidget *parent = nullptr);
     ~AuthWindow();
-
-
-private slots:
-    void on_auth_requested();
 
 private:
     Ui::AuthWindow *ui;
+
+    void on_auth_requested();
 };
 
 #endif // AUTHWINDOW_H

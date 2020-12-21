@@ -24,7 +24,8 @@ SOURCES += \
     system/auth_system.cpp \
     system/object_system.cpp \
     usereditdialog.cpp \
-    vesseleditdialog.cpp
+    vesseleditdialog.cpp \
+    viewmodels/usersviewmodel.cpp
 
 HEADERS += \
     adminpanel.h \
@@ -43,7 +44,8 @@ HEADERS += \
     system/auth_system.h \
     system/object_system.h \
     usereditdialog.h \
-    vesseleditdialog.h
+    vesseleditdialog.h \
+    viewmodels/usersviewmodel.h
 
 FORMS += \
     adminpanel.ui \
