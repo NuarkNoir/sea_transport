@@ -60,5 +60,7 @@ void AuthWindow::on_auth_requested() {
     else {
         QMessageBox::critical(this, "Error", "Deserialized user have wrong type. "
                                              "It may mean corruption of data.");
+        return;
     }
+    close();
 }
