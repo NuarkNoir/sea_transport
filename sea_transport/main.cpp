@@ -1,11 +1,19 @@
 #include "authwindow.h"
 
+#include "system/apparatus.h"
+
 #include <QApplication>
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
     QApplication a(argc, argv);
-    AuthWindow w;
+
+    bool fr = apparatus::isFirstRun();
+
+    apparatus::init();
+    AuthWindow w(nullptr, fr);
     w.show();
-    return a.exec();
+    int ecode = a.exec();
+    apparatus::shutdown();
+
+    return ecode;
 }

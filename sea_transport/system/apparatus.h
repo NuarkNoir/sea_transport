@@ -30,18 +30,19 @@ private:
     void writeGIDS();
     void loadGIDS();
 
-    void serialize_data();
-    void deserialize_data();
-
 public:
     apparatus();
     ~apparatus();
 
-    bool isFirstRun();
     void generate_empty_data();
     const auth_system& get_auth_subsystem();
     const object_system& get_object_subsystem();
 
+
+    void serialize_data();
+    void deserialize_data();
+
+    static bool isFirstRun();
     static apparatus* instance();
     static void init();
     static void shutdown();
