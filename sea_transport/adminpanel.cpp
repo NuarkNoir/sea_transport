@@ -14,24 +14,23 @@ AdminPanel::AdminPanel(QWidget *parent) : QMainWindow(parent), ui(new Ui::AdminP
 //    connect(ui->pb_users_add, &QPushButton::clicked, this, &AdminPanel::on_user_add);
 //    connect(ui->pb_users_remove, &QPushButton::clicked, this, &AdminPanel::on_user_remove);
 
-//    connect(ui->pb_users_add, &QPushButton::clicked, this, &AdminPanel::on_storage_add);
-//    connect(ui->pb_users_remove, &QPushButton::clicked, this, &AdminPanel::on_storage_remove);
-
 //    connect(ui->pb_dp_add, &QPushButton::clicked, this, &AdminPanel::on_delivery_point_add);
 //    connect(ui->pb_dp_remove, &QPushButton::clicked, this, &AdminPanel::on_delivery_point_remove);
 
 
-//    ui->tv_vessels->setModel();
-
     uvm = new UsersViewModel(this);
     ui->tv_users->setModel(this->uvm);
 
-//    ui->tv_dp->setModel();
+    vvm = new VesselsViewModel(this);
+    ui->tv_vessels->setModel(vvm);
 
-//    ui->tv_storages->setModel();
+    dpvm = new DeliveryPointsViewModel(this);
+    ui->tv_dp->setModel(dpvm);
 
 
     uvm->update();
+    vvm->update();
+    dpvm->update();
 }
 
 AdminPanel::~AdminPanel() {
@@ -63,14 +62,6 @@ void AdminPanel::on_user_add() {
 }
 
 void AdminPanel::on_user_remove() {
-
-}
-
-void AdminPanel::on_storage_add() {
-
-}
-
-void AdminPanel::on_storage_remove() {
 
 }
 

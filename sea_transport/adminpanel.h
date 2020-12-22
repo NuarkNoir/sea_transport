@@ -4,6 +4,8 @@
 #include <QMainWindow>
 
 #include "viewmodels/usersviewmodel.h"
+#include "viewmodels/vesselsviewmodel.h"
+#include "viewmodels/deliverypointsviewmodel.h"
 
 #include "entities/user_entity.h"
 
@@ -18,6 +20,8 @@ class AdminPanel : public QMainWindow
     user_entity user;
 
     UsersViewModel *uvm;
+    VesselsViewModel *vvm;
+    DeliveryPointsViewModel *dpvm;
 
 public:
     explicit AdminPanel(QWidget *parent = nullptr);
@@ -37,9 +41,6 @@ private:
 
     void on_user_add();
     void on_user_remove();
-
-    void on_storage_add();
-    void on_storage_remove();
 
     void on_delivery_point_add();
     void on_delivery_point_remove();
