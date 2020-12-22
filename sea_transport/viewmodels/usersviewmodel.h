@@ -5,9 +5,9 @@
 
 #include <QAbstractTableModel>
 
-class UsersViewModel : public QAbstractTableModel
-{
+class UsersViewModel : public QAbstractTableModel {
     Q_OBJECT
+
 public:
     UsersViewModel(QObject *parent = nullptr);
     int rowCount(const QModelIndex &parent = QModelIndex()) const;
