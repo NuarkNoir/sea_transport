@@ -55,5 +55,6 @@ QVariant DeliveryPointsViewModel::data(const QModelIndex &index, int role) const
 }
 
 void DeliveryPointsViewModel::update() {
-    dataChanged(QModelIndex(),  QModelIndex());
+    this->beginResetModel();
+    this->endResetModel();
 }

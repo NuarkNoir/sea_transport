@@ -14,6 +14,7 @@
 #include "viewmodels/deliverypointsviewmodel.h"
 
 #include "entities/user_entity.h"
+#include "entities/dpoint_entity.h"
 
 namespace Ui {
     class AdminPanel;

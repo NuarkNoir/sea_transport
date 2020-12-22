@@ -16,6 +16,10 @@ unsigned int storage_entity::capacity() const {
     return this->_capacity;
 }
 
+void storage_entity::set_capacity(unsigned int new_capacity) {
+    this->_capacity = new_capacity;
+}
+
 const QVector<cargo_entity> storage_entity::cargo() {
     return this->_cargo;
 }

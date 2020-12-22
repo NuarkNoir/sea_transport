@@ -22,6 +22,7 @@ public:
 
     entity_id id() const;
     unsigned int capacity() const;
+    void set_capacity(unsigned int new_capacity);
     const QVector<cargo_entity> cargo();
 
     void add_cargo(cargo_entity object, bool &success);

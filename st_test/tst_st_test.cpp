@@ -133,7 +133,7 @@ void st_test::dpoint_entity_serialization_test() {
         f.open(QIODevice::WriteOnly);
         stream.setDevice(&f);
 
-        ent1 = dpoint_entity("some_test_point");
+        ent1 = dpoint_entity(0, "some_test_point");
         ent1.serialize(stream);
 
         stream.setDevice(nullptr);

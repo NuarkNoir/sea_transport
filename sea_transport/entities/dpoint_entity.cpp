@@ -20,8 +20,26 @@ QString dpoint_entity::title() const {
     return this->_title;
 }
 
+void dpoint_entity::set_title(const QString &new_title) {
+    this->_title = new_title;
+}
+
 const QVector<storage_entity> dpoint_entity::storages() {
     return this->_storages;
+}
+
+void dpoint_entity::set_storages(QVector<storage_entity> storages) {
+    this->_storages = storages;
+}
+
+void dpoint_entity::remove_storage(entity_id sid) {
+    std::remove_if(this->_storages.begin(), this->_storages.end(), [sid](storage_entity ent) {
+        return ent.id() == sid;
+    });
+}
+
+void dpoint_entity::add_storage(storage_entity ent) {
+    this->_storages.push_back(ent);
 }
 
 void dpoint_entity::serialize(QDataStream &output) {

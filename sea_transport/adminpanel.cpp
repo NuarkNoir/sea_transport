@@ -78,7 +78,7 @@ void AdminPanel::on_logout_requested() {
     this->close();
 }
 
-void AdminPanel::on_vessel_add_edit(bool edit) {
+void AdminPanel::on_vessel_add_edit(bool /*edit*/) {
 
 }
 
@@ -129,7 +129,7 @@ void AdminPanel::on_user_add_edit(bool edit) {
         return;
     }
 
-    auto data = ued.user();
+    auto data = ued.user_data();
     if (edit) {
         bool success;
         auto user = apparatus::instance()->get_auth_subsystem()->get_user(usr.login(), success);
@@ -188,7 +188,41 @@ void AdminPanel::on_user_remove() {
 }
 
 void AdminPanel::on_delivery_point_add_edit(bool edit) {
+    auto selected = ui->tv_dp->selectionModel()->selectedRows();
+    if (edit && selected.length() != 1) {
+        return;
+    }
 
+    dpoint_entity dpoint;
+    if (edit) {
+        int idx = selected[0].row();
+        dpoint = apparatus::instance()->get_object_subsystem()->dpoints()[idx];
+    }
+
+    DeliveryPointEditDialog dped(this);
+    dped.setWindowTitle(edit? "Edit delivery point" : "New delivery point");
+    dped.set_dpoint(&dpoint, edit);
+    if (dped.exec() != UserEditDialog::Accepted) {
+        return;
+    }
+
+    auto data = dped.dpoint();
+    if (edit) {
+        bool success;
+        auto dp = apparatus::instance()->get_object_subsystem()->get_dpoint(dpoint.id(), success);
+        if (!success) {
+            QMessageBox::critical(this, "Error", "Error editing delivery point");
+            return;
+        }
+
+        dp->set_title(data->title());
+        dp->set_storages(data->storages());
+    }
+    else {
+        apparatus::instance()->get_object_subsystem()->add_dpoint(*data);
+    }
+
+    dpvm->update();
 }
 
 void AdminPanel::on_delivery_point_remove() {
@@ -208,8 +242,8 @@ void AdminPanel::on_delivery_point_remove() {
     }
 
     foreach (auto mIdx, selected) {
-        int idx = mIdx.row();
-        qDebug() << idx << ' ' << mIdx.data() << '\n';
+        entity_id oid = mIdx.data().toULongLong();
+        apparatus::instance()->get_object_subsystem()->remove_dpoint(oid);
     }
 
     dpvm->update();

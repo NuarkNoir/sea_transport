@@ -61,5 +61,6 @@ QVariant VesselsViewModel::data(const QModelIndex &index, int role) const {
 }
 
 void VesselsViewModel::update() {
-    dataChanged(QModelIndex(),  QModelIndex());
+    this->beginResetModel();
+    this->endResetModel();
 }

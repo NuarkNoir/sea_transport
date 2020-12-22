@@ -3,6 +3,9 @@
 
 CargoEditDialog::CargoEditDialog(QWidget *parent) : QDialog(parent), ui(new Ui::CargoEditDialog) {
     ui->setupUi(this);
+
+    connect(ui->pb_save, &QPushButton::clicked, this, &CargoEditDialog::accept);
+    connect(ui->pb_discard, &QPushButton::clicked, this, &CargoEditDialog::reject);
 }
 
 CargoEditDialog::~CargoEditDialog() {
