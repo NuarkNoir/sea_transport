@@ -21,6 +21,7 @@ public:
     vessel_entity(entity_id skipper_id, entity_id harbor_id, unsigned int capacity);
 
     entity_id id() const;
+    entity_id skipper() const;
     entity_id harbor() const;
     unsigned int capacity() const;
     const QVector<cargo_entity> cargo();

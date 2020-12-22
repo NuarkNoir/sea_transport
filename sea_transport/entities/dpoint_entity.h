@@ -12,14 +12,16 @@
 class dpoint_entity : public IEntity {
 private:
     entity_id _id;
+    entity_id _dispatcher_id;
     QString _title;
     QVector<storage_entity> _storages;
 
 public:
     dpoint_entity() = default;
-    dpoint_entity(const QString &title);
+    dpoint_entity(entity_id dispatcher_id, const QString &title);
 
     entity_id id() const;
+    entity_id dispatcher() const;
     QString title() const;
     const QVector<storage_entity> storages();
 

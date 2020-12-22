@@ -11,6 +11,10 @@ entity_id vessel_entity::id() const {
     return this->_id;
 }
 
+entity_id vessel_entity::skipper() const {
+    return this->_skipper_id;
+}
+
 entity_id vessel_entity::harbor() const {
     return this->_harbor_id;
 }

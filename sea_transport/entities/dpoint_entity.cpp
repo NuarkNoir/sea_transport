@@ -1,7 +1,7 @@
 #include "dpoint_entity.h"
 
-dpoint_entity::dpoint_entity(const QString &title) : _title(title) {
-    this->_id = 0;
+dpoint_entity::dpoint_entity(entity_id dispatcher_id, const QString &title) : _dispatcher_id(dispatcher_id), _title(title) {
+    this->_id = dispatcher_id;
     auto hash = QCryptographicHash::hash(title.toLocal8Bit(), QCryptographicHash::Md5);
     for (auto bit : hash) {
         this->_id += bit;
@@ -10,6 +10,10 @@ dpoint_entity::dpoint_entity(const QString &title) : _title(title) {
 
 entity_id dpoint_entity::id() const {
     return this->_id;
+}
+
+entity_id dpoint_entity::dispatcher() const {
+    return this->_dispatcher_id;
 }
 
 QString dpoint_entity::title() const {
