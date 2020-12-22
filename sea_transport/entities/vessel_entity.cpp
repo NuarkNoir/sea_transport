@@ -3,7 +3,7 @@
 
 entity_id vessel_entity::__global_id = 0;
 
-vessel_entity::vessel_entity(const dpoint_entity &harbor, unsigned int capacity) : _harbor(harbor), _capacity(capacity) {
+vessel_entity::vessel_entity(entity_id harbor_id, unsigned int capacity) : _harbor_id(harbor_id), _capacity(capacity) {
     this->_id = ++vessel_entity::__global_id;
 }
 
@@ -11,8 +11,8 @@ entity_id vessel_entity::id() const {
     return this->_id;
 }
 
-const dpoint_entity vessel_entity::harbor() const {
-    return this->_harbor;
+entity_id vessel_entity::harbor() const {
+    return this->_harbor_id;
 }
 
 unsigned int vessel_entity::capacity() const {
@@ -24,8 +24,7 @@ const QVector<cargo_entity> vessel_entity::cargo() {
 }
 
 void vessel_entity::serialize(QDataStream &output) {
-    output << this->_id;
-    this->_harbor.serialize(output);
+    output << this->_id << this->_harbor_id;
     output << this->_capacity << this->_cargo.size();
     for (auto item : this->_cargo) {
         item.serialize(output);
@@ -33,8 +32,7 @@ void vessel_entity::serialize(QDataStream &output) {
 }
 
 void vessel_entity::deserialize(QDataStream &input) {
-    input >> this->_id;
-    this->_harbor.deserialize(input);
+    input >> this->_id >> this->_harbor_id;
     int icnt;
     input >> this->_capacity >> icnt;
     this->_cargo.resize(icnt);

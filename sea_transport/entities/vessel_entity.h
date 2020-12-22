@@ -11,16 +11,16 @@ private:
     static entity_id __global_id;
 
     entity_id _id;
-    dpoint_entity _harbor;
+    entity_id _harbor_id;
     unsigned int _capacity;
     QVector<cargo_entity> _cargo;
 
 public:
     vessel_entity() = default;
-    vessel_entity(const dpoint_entity &harbor, unsigned int capacity);
+    vessel_entity(entity_id harbor_id, unsigned int capacity);
 
     entity_id id() const;
-    const dpoint_entity harbor() const;
+    entity_id harbor() const;
     unsigned int capacity() const;
     const QVector<cargo_entity> cargo();
 
