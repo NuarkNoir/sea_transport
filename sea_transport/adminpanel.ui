@@ -25,7 +25,11 @@
        </widget>
       </item>
       <item>
-       <widget class="QTableView" name="tv_vessels"/>
+       <widget class="QTableView" name="tv_vessels">
+        <attribute name="horizontalHeaderStretchLastSection">
+         <bool>true</bool>
+        </attribute>
+       </widget>
       </item>
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -57,7 +61,11 @@
        </widget>
       </item>
       <item>
-       <widget class="QTableView" name="tv_users"/>
+       <widget class="QTableView" name="tv_users">
+        <attribute name="horizontalHeaderStretchLastSection">
+         <bool>true</bool>
+        </attribute>
+       </widget>
       </item>
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -89,7 +97,11 @@
        </widget>
       </item>
       <item>
-       <widget class="QTableView" name="tv_dp"/>
+       <widget class="QTableView" name="tv_dp">
+        <attribute name="horizontalHeaderStretchLastSection">
+         <bool>true</bool>
+        </attribute>
+       </widget>
       </item>
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -121,7 +133,11 @@
        </widget>
       </item>
       <item>
-       <widget class="QTableView" name="tv_storages"/>
+       <widget class="QTableView" name="tv_storages">
+        <attribute name="horizontalHeaderStretchLastSection">
+         <bool>true</bool>
+        </attribute>
+       </widget>
       </item>
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout">

@@ -1,6 +1,6 @@
 #include "adminpanel.h"
 #include "ui_adminpanel.h"
-
+#include <QStringListModel >
 
 AdminPanel::AdminPanel(QWidget *parent) : QMainWindow(parent), ui(new Ui::AdminPanel) {
     ui->setupUi(this);
@@ -24,7 +24,7 @@ AdminPanel::AdminPanel(QWidget *parent) : QMainWindow(parent), ui(new Ui::AdminP
 //    ui->tv_vessels->setModel();
 
     uvm = new UsersViewModel(this);
-    ui->tv_users->setModel(uvm);
+    ui->tv_users->setModel(this->uvm);
 
 //    ui->tv_dp->setModel();
 
