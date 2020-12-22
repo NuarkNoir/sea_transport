@@ -27,6 +27,8 @@ public:
     const QString login() const;
     UserRole role() const;
     bool verify_password(const QString &password) const;
+    void set_password(const QString &new_password);
+    void set_role(UserRole new_role);
 
     void serialize(QDataStream &output);
     void deserialize(QDataStream &input);

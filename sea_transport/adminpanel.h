@@ -2,6 +2,12 @@
 #define ADMINPANEL_H
 
 #include <QMainWindow>
+#include <QMessageBox>
+#include <QDebug>
+
+#include "usereditdialog.h"
+#include "vesseleditdialog.h"
+#include "deliverypointeditdialog.h"
 
 #include "viewmodels/usersviewmodel.h"
 #include "viewmodels/vesselsviewmodel.h"
@@ -36,13 +42,13 @@ private:
 
     void on_logout_requested();
 
-    void on_vessel_add();
+    void on_vessel_add_edit(bool edit);
     void on_vessel_remove();
 
-    void on_user_add();
+    void on_user_add_edit(bool edit);
     void on_user_remove();
 
-    void on_delivery_point_add();
+    void on_delivery_point_add_edit(bool edit);
     void on_delivery_point_remove();
 };
 

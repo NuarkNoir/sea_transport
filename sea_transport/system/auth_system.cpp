@@ -2,7 +2,7 @@
 #include "auth_system.h"
 
 
-const user_entity* auth_system::get_user(const QString &login, bool &success) {
+user_entity* auth_system::get_user(const QString &login, bool &success) {
     user_entity *out = nullptr;
 
     success = false;

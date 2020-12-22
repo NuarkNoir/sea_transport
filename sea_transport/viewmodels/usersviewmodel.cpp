@@ -61,5 +61,6 @@ QVariant UsersViewModel::data(const QModelIndex &index, int role) const {
 }
 
 void UsersViewModel::update() {
-    dataChanged(QModelIndex(),  QModelIndex());
+    this->beginResetModel();
+    this->endResetModel();
 }
