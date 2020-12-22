@@ -4,11 +4,11 @@ UsersViewModel::UsersViewModel(QObject *parent) : QAbstractTableModel(parent) {
 
 }
 
-int UsersViewModel::rowCount(const QModelIndex & /*parent*/) const {
-    return apparatus::instance()->get_object_subsystem()->vessels().size();
+int UsersViewModel::rowCount(const QModelIndex &/*parent*/) const {
+    return apparatus::instance()->get_auth_subsystem()->users().length();
 }
 
-int UsersViewModel::columnCount(const QModelIndex & /*parent*/) const {
+int UsersViewModel::columnCount(const QModelIndex &/*parent*/) const {
     return 3;
 }
 
@@ -61,5 +61,6 @@ QVariant UsersViewModel::data(const QModelIndex &index, int role) const {
 }
 
 void UsersViewModel::update() {
-    this->resetInternalData();
+    this->beginResetModel();
+    this->endResetModel();
 }

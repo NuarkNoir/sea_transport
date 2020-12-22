@@ -165,7 +165,7 @@ void st_test::vessel_entity_serialization_test() {
         stream.setDevice(&f);
 
         dpoint_entity test_harbor("test_harbor_for_vessel");
-        ent1 = vessel_entity(test_harbor, 256);
+        ent1 = vessel_entity(test_harbor.id(), 256);
         ent1.serialize(stream);
 
         stream.setDevice(nullptr);
@@ -181,7 +181,7 @@ void st_test::vessel_entity_serialization_test() {
     }
 
     QVERIFY2(
-        ent1.id() == ent2.id() && ent1.harbor().id() == ent2.harbor().id() && ent1.capacity() == ent2.capacity(),
+        ent1.id() == ent2.id() && ent1.harbor() == ent2.harbor() && ent1.capacity() == ent2.capacity(),
         "Delivery Point entity not serialized properly"
     );
 }
