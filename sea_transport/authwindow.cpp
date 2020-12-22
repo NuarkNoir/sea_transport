@@ -34,6 +34,8 @@ void AuthWindow::on_auth_requested() {
             QMessageBox::information(this, "Info", "You are the first user of system. "
                                                    "Your account type is administrator");
         }
+
+        apparatus::instance()->save();
     }
 
     auto user = a->get_user(login, success);
