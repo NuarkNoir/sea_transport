@@ -59,7 +59,7 @@ void apparatus::load() {
     QDataStream stream(&f);
 
     // loading GIDs
-    entity_id vgid, sgid;
+    entity_id vgid, sgid = vgid = 0;
     stream >> vgid >> sgid;
     vessel_entity::preloadGlobalId(vgid);
     storage_entity::preloadGlobalId(sgid);
