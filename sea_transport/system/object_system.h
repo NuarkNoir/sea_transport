@@ -28,8 +28,8 @@ public:
     const QVector<dpoint_entity> dpoints() const;
     const QVector<vessel_entity> vessels() const;
 
-    void deserialize_data(QDataStream &stream);
-    void serialize_data(QDataStream &stream);
+    void deserialize_data(QDataStream *stream);
+    void serialize_data(QDataStream *stream);
 };
 
 #endif // OBJECT_SYSTEM_H

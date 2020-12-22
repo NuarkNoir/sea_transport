@@ -23,8 +23,9 @@ void AuthWindow::on_auth_requested() {
 
     bool success = false;
     auto a = apparatus::instance()->get_auth_subsystem();
+
     if (apparatus::isFirstRun()) {
-        success = a.register_user(login, passw, UserRole::ADMINISTRATOR);
+        success = a->register_user(login, passw, UserRole::ADMINISTRATOR);
         if (!success) {
             QMessageBox::critical(this, "Error", "Cannot register you. Check filesystem permission");
             return;
@@ -35,7 +36,7 @@ void AuthWindow::on_auth_requested() {
         }
     }
 
-    auto user = a.get_user(login, success);
+    auto user = a->get_user(login, success);
     if (!success) {
         QMessageBox::critical(this, "Error", "User not found");
         return;
@@ -48,18 +49,25 @@ void AuthWindow::on_auth_requested() {
     }
 
 
+    QWidget *w;
     if (user->role() == UserRole::ADMINISTRATOR) {
-        AdminPanel(nullptr).set_user(*user).showNormal();
+        w = new AdminPanel(nullptr);
+        ((AdminPanel*) w)->set_user(*user);
     }
     else if (user->role() == UserRole::DISPATCHER) {
         //  DispatcherPanel(nullptr, user).set_user(user).show();
+        return;
     }
     else if (user->role() == UserRole::SKIPPER) {
         //  SkipperPanel(nullptr, user).set_user(user).show();
+        return;
     }
     else {
         QMessageBox::critical(this, "Error", "Deserialized user have wrong type. "
                                              "It may mean corruption of data.");
         return;
     }
+
+    w->show();
+    close();
 }

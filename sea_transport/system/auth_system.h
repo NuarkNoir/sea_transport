@@ -17,10 +17,10 @@ public:
     bool remove_user(const QString &login);
     bool register_user(const QString &login, const QString &password, UserRole role);
 
-    const QVector<user_entity> users() const;
+    const QVector<user_entity>& users() const;
 
-    void deserialize_data(QDataStream &stream);
-    void serialize_data(QDataStream &stream);
+    void deserialize_data(QDataStream *stream);
+    void serialize_data(QDataStream *stream);
 };
 
 #endif // AUTH_SYSTEM_H

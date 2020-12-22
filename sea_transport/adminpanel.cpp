@@ -1,10 +1,10 @@
 #include "adminpanel.h"
 #include "ui_adminpanel.h"
 
+
 AdminPanel::AdminPanel(QWidget *parent) : QMainWindow(parent), ui(new Ui::AdminPanel) {
     ui->setupUi(this);
 
-    uvm = new UsersViewModel(this);
 
 //    connect(ui->pb_logout, &QPushButton::clicked, this, &AdminPanel::on_logout_requested);
 
@@ -20,9 +20,14 @@ AdminPanel::AdminPanel(QWidget *parent) : QMainWindow(parent), ui(new Ui::AdminP
 //    connect(ui->pb_dp_add, &QPushButton::clicked, this, &AdminPanel::on_delivery_point_add);
 //    connect(ui->pb_dp_remove, &QPushButton::clicked, this, &AdminPanel::on_delivery_point_remove);
 
+
 //    ui->tv_vessels->setModel();
+
+    uvm = new UsersViewModel(this);
     ui->tv_users->setModel(uvm);
+
 //    ui->tv_dp->setModel();
+
 //    ui->tv_storages->setModel();
 
 

@@ -85,30 +85,34 @@ const QVector<vessel_entity> object_system::vessels() const {
     return this->_vessels;
 }
 
-void object_system::deserialize_data(QDataStream &stream) {
+void object_system::deserialize_data(QDataStream *stream) {
     int dicnt;
-    stream >> dicnt;
-    this->_dpoints.resize(dicnt);
-    for (int i = 0; i < dicnt; i++) {
-        this->_dpoints[i].deserialize(stream);
+    *stream >> dicnt;
+    if (dicnt > 0) {
+        this->_dpoints.resize(dicnt);
+        for (int i = 0; i < dicnt; i++) {
+            this->_dpoints[i].deserialize(*stream);
+        }
     }
 
     int vicnt;
-    stream >> vicnt;
-    this->_vessels.resize(vicnt);
-    for (int i = 0; i < vicnt; i++) {
-        this->_vessels[i].deserialize(stream);
+    *stream >> vicnt;
+    if (vicnt > 0) {
+        this->_vessels.resize(vicnt);
+        for (int i = 0; i < vicnt; i++) {
+            this->_vessels[i].deserialize(*stream);
+        }
     }
 }
 
-void object_system::serialize_data(QDataStream &stream) {
-    stream << this->_dpoints.size();
+void object_system::serialize_data(QDataStream *stream) {
+    *stream << this->_dpoints.size();
     for (auto &item : this->_dpoints) {
-        item.serialize(stream);
+        item.serialize(*stream);
     }
 
-    stream << this->_vessels.size();
+    *stream << this->_vessels.size();
     for (auto &item : this->_vessels) {
-        item.serialize(stream);
+        item.serialize(*stream);
     }
 }

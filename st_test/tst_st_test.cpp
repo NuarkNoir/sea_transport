@@ -245,18 +245,18 @@ void st_test::apparatus_check_first_run() {
 
 void st_test::apparatus_check_auth_subsystem() {
     apparatus::init();
-    auth_system as = apparatus::instance()->get_auth_subsystem();
+    auto as = apparatus::instance()->get_auth_subsystem();
     {
-        bool test = as.register_user("testor", "passwd", UserRole::ADMINISTRATOR);
+        bool test = as->register_user("testor", "passwd", UserRole::ADMINISTRATOR);
         QVERIFY(test);
     }
     {
         bool test;
-        as.get_user("testor", test);
+        as->get_user("testor", test);
         QVERIFY(test);
     }
     {
-        bool test = as.remove_user("testor");
+        bool test = as->remove_user("testor");
         QVERIFY(test);
     }
     apparatus::shutdown();
@@ -264,19 +264,19 @@ void st_test::apparatus_check_auth_subsystem() {
 
 void st_test::apparatus_check_object_subsystem() {
     apparatus::init();
-    object_system os = apparatus::instance()->get_object_subsystem();
+    auto os = apparatus::instance()->get_object_subsystem();
     dpoint_entity p("test");
     {
-        bool test = os.add_dpoint(p);
+        bool test = os->add_dpoint(p);
         QVERIFY(test);
     }
     {
         bool test;
-        os.get_dpoint(p.id(), test);
+        os->get_dpoint(p.id(), test);
         QVERIFY(test);
     }
     {
-        bool test = os.remove_dpoint(p.id());
+        bool test = os->remove_dpoint(p.id());
         QVERIFY(test);
     }
     apparatus::shutdown();

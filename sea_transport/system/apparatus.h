@@ -18,29 +18,18 @@ private:
     static apparatus *_instance;
     static const QString filename;
 
-    QFile *_bin_file;
-    QDataStream stream;
-
-    auth_system _auth_system;
-    object_system _object_system;
-
-    void open_stream();
-    void close_stream();
-
-    void writeGIDS();
-    void loadGIDS();
+    auth_system* _auth_system;
+    object_system* _object_system;
 
 public:
-    apparatus();
+    explicit apparatus();
     ~apparatus();
 
-    void generate_empty_data();
-    auth_system& get_auth_subsystem();
-    object_system& get_object_subsystem();
+    auth_system* get_auth_subsystem();
+    object_system* get_object_subsystem();
 
-
-    void serialize_data();
-    void deserialize_data();
+    void save();
+    void load();
 
     static bool isFirstRun();
     static void generate_lock_file();

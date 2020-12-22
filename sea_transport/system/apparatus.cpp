@@ -4,27 +4,15 @@
 apparatus *apparatus::_instance = nullptr;
 const QString apparatus::filename = "data.bin";
 
-void apparatus::open_stream() {
-    this->_bin_file = new QFile(apparatus::filename);
-    this->_bin_file->open(QIODevice::ReadWrite);
-
-    stream.setDevice(_bin_file);
-}
-
-void apparatus::close_stream() {
-    stream.setDevice(nullptr);
-
-    this->_bin_file->close();
-    delete this->_bin_file;
-    this->_bin_file = nullptr;
-}
-
 apparatus::apparatus() {
-
+    this->_auth_system = new auth_system();
+    this->_object_system = new object_system();
 }
 
 apparatus::~apparatus() {
-
+    this->save();
+    delete this->_auth_system;
+    delete this->_object_system;
 }
 
 void apparatus::generate_lock_file() {
@@ -42,52 +30,79 @@ apparatus* apparatus::instance() {
     return apparatus::_instance;
 }
 
+void apparatus::save() {
+    if (_instance == nullptr) {
+        return;
+    }
+    QFile f(apparatus::filename);
+    f.open(QIODevice::WriteOnly);
+    QDataStream stream(&f);
+
+    // saving GIDs
+    entity_id vgid = vessel_entity::GID();
+    entity_id sgid = storage_entity::GID();
+    stream << vgid << sgid;
+
+    // serializing data
+    this->_auth_system->serialize_data(&stream);
+    this->_object_system->serialize_data(&stream);
+
+    f.close();
+}
+
+void apparatus::load() {
+    if (_instance == nullptr) {
+        throw std::runtime_error("HOW DU FUCK INSTANCE IS NULL????");
+    }
+    QFile f(apparatus::filename);
+    f.open(QIODevice::ReadOnly);
+    QDataStream stream(&f);
+
+    // loading GIDs
+    entity_id vgid, sgid;
+    stream >> vgid >> sgid;
+    vessel_entity::preloadGlobalId(vgid);
+    storage_entity::preloadGlobalId(sgid);
+
+    // deserializing data
+    this->_auth_system->deserialize_data(&stream);
+    this->_object_system->deserialize_data(&stream);
+
+    f.close();
+}
+
 bool apparatus::isFirstRun() {
     return !QFile().exists("lock");
 }
 
-auth_system& apparatus::get_auth_subsystem() {
+auth_system* apparatus::get_auth_subsystem() {
     return this->_auth_system;
 }
 
-object_system& apparatus::get_object_subsystem() {
+object_system* apparatus::get_object_subsystem() {
     return this->_object_system;
 }
 
 void apparatus::init() {
+    if (apparatus::_instance != nullptr) {
+        throw std::runtime_error("System already initialized!");
+    }
+
+    bool fr = apparatus::isFirstRun();
     apparatus::_instance = new apparatus();
 
-    apparatus::_instance->open_stream();
-    apparatus::_instance->loadGIDS();
-    apparatus::_instance->deserialize_data();
+    if (fr) {
+        if (!QFile().exists(apparatus::filename)) {
+            QFile init(apparatus::filename);
+            init.open(QIODevice::ReadWrite);
+            init.close();
+        }
+        apparatus::_instance->save();
+    }
+
+    apparatus::_instance->load();
 }
 
 void apparatus::shutdown() {
-    apparatus::_instance->writeGIDS();
-    apparatus::_instance->serialize_data();
-    apparatus::_instance->close_stream();
     delete apparatus::_instance;
-}
-
-void apparatus::writeGIDS() {
-    entity_id vgid = vessel_entity::GID();
-    entity_id sgid = storage_entity::GID();
-    this->stream << vgid << sgid;
-}
-
-void apparatus::loadGIDS() {
-    entity_id vgid, sgid;
-    this->stream >> vgid >> sgid;
-    vessel_entity::preloadGlobalId(vgid);
-    storage_entity::preloadGlobalId(sgid);
-}
-
-void apparatus::serialize_data() {
-    this->_auth_system.serialize_data(this->stream);
-    this->_object_system.serialize_data(this->stream);
-}
-
-void apparatus::deserialize_data() {
-    this->_auth_system.deserialize_data(this->stream);
-    this->_object_system.deserialize_data(this->stream);
 }

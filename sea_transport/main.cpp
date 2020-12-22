@@ -13,8 +13,8 @@ int main(int argc, char *argv[]) {
     w.show();
 
     QObject::connect(&a, &QApplication::aboutToQuit, []() {
-        apparatus::shutdown();
-        if (apparatus::isFirstRun()) {
+        apparatus::instance()->save();
+        if (apparatus::isFirstRun() && apparatus::instance()->get_auth_subsystem()->users().length() > 0) {
             apparatus::generate_lock_file();
         }
     });

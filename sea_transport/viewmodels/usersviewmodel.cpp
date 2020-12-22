@@ -5,7 +5,7 @@ UsersViewModel::UsersViewModel(QObject *parent) : QAbstractTableModel(parent) {
 }
 
 int UsersViewModel::rowCount(const QModelIndex & /*parent*/) const {
-    return apparatus::instance()->get_object_subsystem().vessels().size();
+    return apparatus::instance()->get_object_subsystem()->vessels().size();
 }
 
 int UsersViewModel::columnCount(const QModelIndex & /*parent*/) const {
@@ -28,7 +28,7 @@ QVariant UsersViewModel::headerData(int section, Qt::Orientation orientation, in
 
 QVariant UsersViewModel::data(const QModelIndex &index, int role) const {
     if (role == Qt::DisplayRole) {
-        auto item = apparatus::instance()->get_auth_subsystem().users()[index.row()];
+        auto item = apparatus::instance()->get_auth_subsystem()->users()[index.row()];
         int col = index.column();
 
         switch (col) {
