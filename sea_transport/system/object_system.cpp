@@ -66,11 +66,11 @@ bool object_system::remove_vessel(entity_id oid) {
     return false;
 }
 
-bool object_system::add_vessel(vessel_entity dpoint) {
+bool object_system::add_vessel(vessel_entity vessel) {
     bool exists = false;
-    this->get_dpoint(dpoint.id(), exists);
+    this->get_vessel(vessel.id(), exists);
     if (!exists) {
-        this->_vessels.push_back(dpoint);
+        this->_vessels.push_back(vessel);
         return true;
     }
 

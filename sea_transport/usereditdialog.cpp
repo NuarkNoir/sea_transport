@@ -24,6 +24,7 @@ void UserEditDialog::set_user(user_entity* user, bool edit) {
         ui->et_login->setText(user->login());
         ui->et_password->setText("##########UNEDITED##########");
         ui->cb_role->setCurrentIndex((int)user->role());
+        ui->cb_role->setEnabled(false);
     }
     else {
         this->_user_data = new user_data_struct{};
@@ -46,8 +47,7 @@ void UserEditDialog::accept() {
     }
     bool emptyTitle = ui->et_login->text().trimmed().isEmpty();
     bool emptyPassword = ui->et_password->text().trimmed().isEmpty();
-    bool lowerank = this->_user_data->edit && this->_user_data->role < role;
-    if (emptyTitle || emptyPassword || lowerank) {
+    if (emptyTitle || emptyPassword) {
         QMessageBox errDlg(this);
         errDlg.setTextFormat(Qt::RichText);
         errDlg.setWindowTitle(tr("Error"));
@@ -58,9 +58,6 @@ void UserEditDialog::accept() {
         }
         if (emptyPassword) {
             message.append("<br>- Password cannot be empty (all spaces - empty too)");
-        }
-        if (lowerank) {
-            message.append("<br>- You cannot lower users rank");
         }
         errDlg.setText(message);
         errDlg.exec();
