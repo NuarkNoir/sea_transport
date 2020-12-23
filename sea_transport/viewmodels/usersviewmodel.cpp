@@ -4,11 +4,11 @@ UsersViewModel::UsersViewModel(QObject *parent) : QAbstractTableModel(parent) {
 
 }
 
-int UsersViewModel::rowCount(const QModelIndex & /*parent*/) const {
-    return apparatus::instance()->get_object_subsystem()->vessels().size();
+int UsersViewModel::rowCount(const QModelIndex &/*parent*/) const {
+    return apparatus::instance()->get_auth_subsystem()->users().length();
 }
 
-int UsersViewModel::columnCount(const QModelIndex & /*parent*/) const {
+int UsersViewModel::columnCount(const QModelIndex &/*parent*/) const {
     return 3;
 }
 
@@ -29,29 +29,29 @@ QVariant UsersViewModel::headerData(int section, Qt::Orientation orientation, in
 QVariant UsersViewModel::data(const QModelIndex &index, int role) const {
     if (role == Qt::DisplayRole) {
         auto item = apparatus::instance()->get_auth_subsystem()->users()[index.row()];
-        int col = index.column();
 
+        int col = index.column();
         switch (col) {
             case 0:
                 return QString::number(item.id());
             case 1:
                 return item.login();
             case 2:
-                QString role = "unknown";
+                QString _role = "unknown";
 
                 switch(item.role()) {
                     case UserRole::ADMINISTRATOR:
-                        role = "Administrator";
+                        _role = "Administrator";
                         break;
                     case UserRole::DISPATCHER:
-                        role = "Dispatcher";
+                        _role = "Dispatcher";
                         break;
                     case UserRole::SKIPPER:
-                        role = "Skipper";
+                        _role = "Skipper";
                         break;
                 }
 
-                return role;
+                return _role;
         }
 
         return "UNKNOWN FIELD";
@@ -61,5 +61,6 @@ QVariant UsersViewModel::data(const QModelIndex &index, int role) const {
 }
 
 void UsersViewModel::update() {
-    this->resetInternalData();
+    this->beginResetModel();
+    this->endResetModel();
 }

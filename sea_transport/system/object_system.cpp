@@ -1,7 +1,7 @@
 #include "object_system.h"
 
 
-const dpoint_entity* object_system::get_dpoint(entity_id oid, bool &success) {
+dpoint_entity* object_system::get_dpoint(entity_id oid, bool &success) {
     dpoint_entity *out = nullptr;
 
     success = false;
@@ -39,7 +39,7 @@ bool object_system::add_dpoint(dpoint_entity dpoint) {
     return false;
 }
 
-const vessel_entity* object_system::get_vessel(entity_id oid, bool &success) {
+vessel_entity* object_system::get_vessel(entity_id oid, bool &success) {
     vessel_entity *out = nullptr;
 
     success = false;
@@ -66,11 +66,11 @@ bool object_system::remove_vessel(entity_id oid) {
     return false;
 }
 
-bool object_system::add_vessel(vessel_entity dpoint) {
+bool object_system::add_vessel(vessel_entity vessel) {
     bool exists = false;
-    this->get_dpoint(dpoint.id(), exists);
+    this->get_vessel(vessel.id(), exists);
     if (!exists) {
-        this->_vessels.push_back(dpoint);
+        this->_vessels.push_back(vessel);
         return true;
     }
 

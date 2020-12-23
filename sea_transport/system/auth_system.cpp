@@ -1,9 +1,8 @@
 #include "apparatus.h"
 #include "auth_system.h"
-#include <iostream>
 
 
-const user_entity* auth_system::get_user(const QString &login, bool &success) {
+user_entity* auth_system::get_user(const QString &login, bool &success) {
     user_entity *out = nullptr;
 
     success = false;
@@ -34,11 +33,7 @@ bool auth_system::register_user(const QString &login, const QString &password, U
     bool exists = false;
     this->get_user(login, exists);
     if (!exists) {
-        std::cout << apparatus::instance()->get_auth_subsystem()->users().length() << std::endl;
         this->_users.push_back(user_entity(login, password, role));
-        std::cout << apparatus::instance()->get_auth_subsystem()->users().length() << std::endl;
-        apparatus::instance()->save();
-        std::cout << apparatus::instance()->get_auth_subsystem()->users().length() << std::endl;
         return true;
     }
 

@@ -16,11 +16,11 @@ private:
 public:
     object_system() = default;
 
-    const dpoint_entity* get_dpoint(entity_id oid, bool &success);
+    dpoint_entity* get_dpoint(entity_id oid, bool &success);
     bool remove_dpoint(entity_id oid);
     bool add_dpoint(dpoint_entity dpoint);
 
-    const vessel_entity* get_vessel(entity_id oid, bool &success);
+    vessel_entity* get_vessel(entity_id oid, bool &success);
     bool remove_vessel(entity_id oid);
     bool add_vessel(vessel_entity dpoint);
 

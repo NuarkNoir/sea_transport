@@ -25,7 +25,10 @@ SOURCES += \
     system/object_system.cpp \
     usereditdialog.cpp \
     vesseleditdialog.cpp \
-    viewmodels/usersviewmodel.cpp
+    viewmodels/cargoviewmodel.cpp \
+    viewmodels/deliverypointsviewmodel.cpp \
+    viewmodels/usersviewmodel.cpp \
+    viewmodels/vesselsviewmodel.cpp
 
 HEADERS += \
     adminpanel.h \
@@ -45,7 +48,10 @@ HEADERS += \
     system/object_system.h \
     usereditdialog.h \
     vesseleditdialog.h \
-    viewmodels/usersviewmodel.h
+    viewmodels/cargoviewmodel.h \
+    viewmodels/deliverypointsviewmodel.h \
+    viewmodels/usersviewmodel.h \
+    viewmodels/vesselsviewmodel.h
 
 FORMS += \
     adminpanel.ui \

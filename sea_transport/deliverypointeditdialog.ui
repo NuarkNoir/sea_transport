@@ -10,10 +10,22 @@
     <height>386</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>394</width>
+    <height>386</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>394</width>
+    <height>386</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
+  <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
     <layout class="QFormLayout" name="formLayout">
      <property name="horizontalSpacing">
@@ -44,28 +56,51 @@
     </layout>
    </item>
    <item>
-    <widget class="QListView" name="lv_storages"/>
-   </item>
-   <item>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QPushButton" name="btn_storage_add">
-       <property name="text">
-        <string>Add storage</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="btn_storage_remove">
-       <property name="enabled">
-        <bool>false</bool>
-       </property>
-       <property name="text">
-        <string>Remove storage</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>Storages IDs</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QListView" name="lv_storages">
+        <property name="editTriggers">
+         <set>QAbstractItemView::NoEditTriggers</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QPushButton" name="pb_storage_add">
+          <property name="text">
+           <string>Add storage</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pb_storage_edit">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="text">
+           <string>Edit storage</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pb_storage_remove">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="text">
+           <string>Remove storage</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
    </item>
    <item>
     <spacer name="verticalSpacer">
@@ -83,14 +118,14 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
-      <widget class="QPushButton" name="btn_discard">
+      <widget class="QPushButton" name="pb_discard">
        <property name="text">
         <string>Discard</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="btn_save">
+      <widget class="QPushButton" name="pb_save">
        <property name="text">
         <string>Save</string>
        </property>

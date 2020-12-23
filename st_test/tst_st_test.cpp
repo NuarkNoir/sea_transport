@@ -133,7 +133,7 @@ void st_test::dpoint_entity_serialization_test() {
         f.open(QIODevice::WriteOnly);
         stream.setDevice(&f);
 
-        ent1 = dpoint_entity("some_test_point");
+        ent1 = dpoint_entity(0, "some_test_point");
         ent1.serialize(stream);
 
         stream.setDevice(nullptr);
@@ -164,8 +164,8 @@ void st_test::vessel_entity_serialization_test() {
         f.open(QIODevice::WriteOnly);
         stream.setDevice(&f);
 
-        dpoint_entity test_harbor("test_harbor_for_vessel");
-        ent1 = vessel_entity(test_harbor, 256);
+        dpoint_entity test_harbor(0, "test_harbor_for_vessel");
+        ent1 = vessel_entity(0, test_harbor.id(), 256);
         ent1.serialize(stream);
 
         stream.setDevice(nullptr);
@@ -181,7 +181,7 @@ void st_test::vessel_entity_serialization_test() {
     }
 
     QVERIFY2(
-        ent1.id() == ent2.id() && ent1.harbor().id() == ent2.harbor().id() && ent1.capacity() == ent2.capacity(),
+        ent1.id() == ent2.id() && ent1.harbor() == ent2.harbor() && ent1.capacity() == ent2.capacity(),
         "Delivery Point entity not serialized properly"
     );
 }
@@ -265,7 +265,7 @@ void st_test::apparatus_check_auth_subsystem() {
 void st_test::apparatus_check_object_subsystem() {
     apparatus::init();
     auto os = apparatus::instance()->get_object_subsystem();
-    dpoint_entity p("test");
+    dpoint_entity p(0, "test");
     {
         bool test = os->add_dpoint(p);
         QVERIFY(test);

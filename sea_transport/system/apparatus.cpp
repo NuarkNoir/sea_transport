@@ -39,9 +39,12 @@ void apparatus::save() {
     QDataStream stream(&f);
 
     // saving GIDs
-    entity_id vgid = vessel_entity::GID();
+    entity_id cgid = cargo_entity::GID();
+    entity_id dgid = dpoint_entity::GID();
     entity_id sgid = storage_entity::GID();
-    stream << vgid << sgid;
+    entity_id ugid = user_entity::GID();
+    entity_id vgid = vessel_entity::GID();
+    stream << cgid << dgid << sgid << ugid << vgid;
 
     // serializing data
     this->_auth_system->serialize_data(&stream);
@@ -52,17 +55,20 @@ void apparatus::save() {
 
 void apparatus::load() {
     if (_instance == nullptr) {
-        throw std::runtime_error("HOW DU FUCK INSTANCE IS NULL????");
+        throw std::runtime_error("NO WAY INSTANCE IS NULL!");
     }
     QFile f(apparatus::filename);
     f.open(QIODevice::ReadOnly);
     QDataStream stream(&f);
 
     // loading GIDs
-    entity_id vgid, sgid;
-    stream >> vgid >> sgid;
-    vessel_entity::preloadGlobalId(vgid);
+    entity_id cgid, dgid, sgid, ugid, vgid = ugid = sgid = dgid = cgid = 0;
+    stream >> cgid >> dgid >> sgid >> ugid >> vgid;
+    cargo_entity::preloadGlobalId(cgid);
+    dpoint_entity::preloadGlobalId(dgid);
     storage_entity::preloadGlobalId(sgid);
+    user_entity::preloadGlobalId(ugid);
+    vessel_entity::preloadGlobalId(vgid);
 
     // deserializing data
     this->_auth_system->deserialize_data(&stream);

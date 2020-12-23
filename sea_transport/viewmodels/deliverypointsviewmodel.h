@@ -1,15 +1,15 @@
-#ifndef USERSVIEWMODEL_H
-#define USERSVIEWMODEL_H
+#ifndef DELIVERYPOINTSVIEWMODEL_H
+#define DELIVERYPOINTSVIEWMODEL_H
 
 #include "system/apparatus.h"
 
 #include <QAbstractTableModel>
 
-class UsersViewModel : public QAbstractTableModel {
+class DeliveryPointsViewModel : public QAbstractTableModel {
     Q_OBJECT
 
 public:
-    UsersViewModel(QObject *parent = nullptr);
+    DeliveryPointsViewModel(QObject *parent = nullptr);
     int rowCount(const QModelIndex &parent = QModelIndex()) const;
     int columnCount(const QModelIndex &parent = QModelIndex()) const;
     QVariant headerData(int section, Qt::Orientation orientation, int role) const;
@@ -19,4 +19,4 @@ public slots:
     void update();
 };
 
-#endif // USERSVIEWMODEL_H
+#endif // DELIVERYPOINTSVIEWMODEL_H

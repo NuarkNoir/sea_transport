@@ -13,7 +13,7 @@ private:
 public:
     auth_system() = default;
 
-    const user_entity* get_user(const QString &login, bool &success);
+    user_entity* get_user(const QString &login, bool &success);
     bool remove_user(const QString &login);
     bool register_user(const QString &login, const QString &password, UserRole role);
 
