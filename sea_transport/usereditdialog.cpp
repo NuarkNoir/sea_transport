@@ -52,7 +52,7 @@ void UserEditDialog::accept() {
         errDlg.setTextFormat(Qt::RichText);
         errDlg.setWindowTitle(tr("Error"));
         errDlg.setIcon(QMessageBox::Critical);
-        QString message = tr("Some errors happend, while saving your note:");
+        QString message = tr("Some errors happend, while saving:");
         if (emptyTitle) {
             message.append("<br>- Title cannot be empty (all spaces - empty too)");
         }

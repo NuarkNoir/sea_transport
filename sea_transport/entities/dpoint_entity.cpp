@@ -1,8 +1,10 @@
 #include "dpoint_entity.h"
 
 
+entity_id dpoint_entity::__global_id = 0;
+
 dpoint_entity::dpoint_entity() {
-    this->_id += QRandomGenerator().generate64();
+    this->_id = ++dpoint_entity::__global_id + QRandomGenerator().generate64();
 }
 
 dpoint_entity::dpoint_entity(entity_id dispatcher_id, const QString &title) : _dispatcher_id(dispatcher_id), _title(title) {
@@ -82,4 +84,12 @@ void dpoint_entity::deserialize(QDataStream &input) {
     for (int i = 0; i < icnt; i++) {
         this->_storages[i].deserialize(input);
     }
+}
+
+void dpoint_entity::preloadGlobalId(entity_id gid) {
+    dpoint_entity::__global_id = gid;
+}
+
+entity_id dpoint_entity::GID() {
+    return dpoint_entity::__global_id;
 }

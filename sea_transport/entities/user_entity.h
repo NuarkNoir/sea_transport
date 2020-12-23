@@ -15,6 +15,8 @@ enum class UserRole {
 
 class user_entity : public IEntity {
 private:
+    static entity_id __global_id;
+
     entity_id _id = 0;
     QString _login;
     UserRole _role;
@@ -33,6 +35,8 @@ public:
 
     void serialize(QDataStream &output);
     void deserialize(QDataStream &input);
+    static void preloadGlobalId(entity_id gid);
+    static entity_id GID();
 };
 
 #endif // USER_ENTITY_H

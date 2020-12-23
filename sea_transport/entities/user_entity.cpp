@@ -1,8 +1,10 @@
 #include "user_entity.h"
 
 
+entity_id user_entity::__global_id = 0;
+
 user_entity::user_entity() {
-    this->_id +=  QRandomGenerator().generate64();
+    this->_id = ++user_entity::__global_id + QRandomGenerator().generate64();
 }
 
 user_entity::user_entity(const QString &login, const QString &password, UserRole role) : _login(login), _role(role) {
@@ -46,4 +48,12 @@ void user_entity::serialize(QDataStream &output) {
 
 void user_entity::deserialize(QDataStream &input) {
     input >> this->_id >> this->_login >> this->_role >> this->_pwd_hash;
+}
+
+void user_entity::preloadGlobalId(entity_id gid) {
+    user_entity::__global_id = gid;
+}
+
+entity_id user_entity::GID() {
+    return user_entity::__global_id;
 }

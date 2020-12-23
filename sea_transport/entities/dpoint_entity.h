@@ -12,6 +12,8 @@
 
 class dpoint_entity : public IEntity {
 private:
+    static entity_id __global_id;
+
     entity_id _id = 0;
     entity_id _dispatcher_id;
     QString _title;
@@ -33,6 +35,8 @@ public:
 
     void serialize(QDataStream &output);
     void deserialize(QDataStream &input);
+    static void preloadGlobalId(entity_id gid);
+    static entity_id GID();
 };
 
 #endif // DPOINT_ENTITY_H

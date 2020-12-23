@@ -94,7 +94,7 @@ void DeliveryPointEditDialog::set_dpoint(dpoint_entity* dpoint, bool edit) {
 void DeliveryPointEditDialog::accept() {
     bool emptyTitle = ui->et_title->text().trimmed().isEmpty();
     if (emptyTitle) {;
-        QString message = "Some errors happend, while saving your note:"
+        QString message = "Some errors happend, while saving:"
                           "<br>- Title cannot be empty (all spaces - empty too)";
         QMessageBox::critical(this, "Error", message);
         return;
