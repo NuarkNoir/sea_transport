@@ -53,7 +53,7 @@
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <property name="documentMode">
        <bool>false</bool>
@@ -68,6 +68,9 @@
        <layout class="QGridLayout" name="gridLayout">
         <item row="0" column="0" colspan="2">
          <widget class="QTableView" name="tv_users">
+          <property name="selectionMode">
+           <enum>QAbstractItemView::SingleSelection</enum>
+          </property>
           <property name="selectionBehavior">
            <enum>QAbstractItemView::SelectRows</enum>
           </property>
@@ -173,6 +176,9 @@
         </item>
         <item row="0" column="1" colspan="2">
          <widget class="QTableView" name="tv_vessels">
+          <property name="selectionMode">
+           <enum>QAbstractItemView::SingleSelection</enum>
+          </property>
           <property name="selectionBehavior">
            <enum>QAbstractItemView::SelectRows</enum>
           </property>
@@ -234,6 +240,9 @@
         </item>
         <item row="0" column="1" colspan="2">
          <widget class="QTableView" name="tv_dp">
+          <property name="selectionMode">
+           <enum>QAbstractItemView::SingleSelection</enum>
+          </property>
           <property name="selectionBehavior">
            <enum>QAbstractItemView::SelectRows</enum>
           </property>

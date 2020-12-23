@@ -12,13 +12,13 @@
 
 class dpoint_entity : public IEntity {
 private:
-    entity_id _id;
+    entity_id _id = 0;
     entity_id _dispatcher_id;
     QString _title;
     QVector<storage_entity> _storages;
 
 public:
-    dpoint_entity() = default;
+    dpoint_entity();
     dpoint_entity(entity_id dispatcher_id, const QString &title);
 
     entity_id id() const;
@@ -26,6 +26,7 @@ public:
     QString title() const;
     void set_title(const QString &new_title);
     const QVector<storage_entity> storages();
+    storage_entity* get_storage(entity_id sid, bool &success);
     void set_storages(QVector<storage_entity> storages);
     void remove_storage(entity_id sid);
     void add_storage(storage_entity ent);

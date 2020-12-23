@@ -12,23 +12,27 @@ class vessel_entity : public IEntity {
 private:
     static entity_id __global_id;
 
-    entity_id _id;
-    entity_id _skipper_id;
+    entity_id _id = 0;
+    QString _skipper;
     entity_id _harbor_id;
-    unsigned int _capacity;
+    unsigned int _capacity = 50000;
     QVector<cargo_entity> _cargo;
 
 public:
-    vessel_entity() = default;
-    vessel_entity(entity_id skipper_id, entity_id harbor_id, unsigned int capacity);
+    vessel_entity();
+    vessel_entity(QString skipper, entity_id harbor_id, unsigned int capacity);
 
     entity_id id() const;
-    entity_id skipper() const;
+    QString skipper() const;
+    void set_skipper(const QString &new_skipper);
     entity_id harbor() const;
+    void set_harbor(entity_id new_harbor);
     unsigned int capacity() const;
+    void set_capacity(unsigned int new_capacity);
     const QVector<cargo_entity> cargo();
 
     void add_cargo(cargo_entity object, bool &success);
+    cargo_entity get_cargo(entity_id oid, bool &found);
     void withdraw_cargo(entity_id oid, bool &success);
 
     void serialize(QDataStream &output);

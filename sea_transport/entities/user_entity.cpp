@@ -1,8 +1,16 @@
 #include "user_entity.h"
 
+
+user_entity::user_entity() {
+    this->_id +=  QRandomGenerator().generate64();
+}
+
 user_entity::user_entity(const QString &login, const QString &password, UserRole role) : _login(login), _role(role) {
     this->_pwd_hash = QCryptographicHash::hash(password.toLocal8Bit(), QCryptographicHash::Sha3_256);
     foreach (auto bit, this->_pwd_hash) {
+        this->_id += bit;
+    }
+    foreach (auto bit, QCryptographicHash::hash(login.toLocal8Bit(), QCryptographicHash::Sha3_256)) {
         this->_id += bit;
     }
     this->_id +=  QRandomGenerator().generate64();

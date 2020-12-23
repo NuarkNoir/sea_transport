@@ -1,5 +1,10 @@
 #include "cargo_entity.h"
 
+
+cargo_entity::cargo_entity() {
+    this->_id += QRandomGenerator().generate64();
+}
+
 cargo_entity::cargo_entity(const QString &title, unsigned int volume) : _title(title), _volume(volume) {
     this->_id = volume;
     auto hash = QCryptographicHash::hash(title.toLocal8Bit(), QCryptographicHash::Md5);

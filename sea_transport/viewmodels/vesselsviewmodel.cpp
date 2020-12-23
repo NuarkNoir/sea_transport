@@ -9,7 +9,7 @@ int VesselsViewModel::rowCount(const QModelIndex &/*parent*/) const {
 }
 
 int VesselsViewModel::columnCount(const QModelIndex &/*parent*/) const {
-    return 5;
+    return 6;
 }
 
 QVariant VesselsViewModel::headerData(int section, Qt::Orientation orientation, int role) const {
@@ -18,12 +18,14 @@ QVariant VesselsViewModel::headerData(int section, Qt::Orientation orientation, 
             case 0:
                 return QString("VID");
             case 1:
-                return QString("Harbor");
+                return QString("Skipper");
             case 2:
-                return QString("Capacity");
+                return QString("Harbor");
             case 3:
-                return QString("Cargo count");
+                return QString("Capacity");
             case 4:
+                return QString("Cargo count");
+            case 5:
                 return QString("Cargo volume");
         }
     }
@@ -33,20 +35,22 @@ QVariant VesselsViewModel::headerData(int section, Qt::Orientation orientation, 
 QVariant VesselsViewModel::data(const QModelIndex &index, int role) const {
     if (role == Qt::DisplayRole) {
         auto item = apparatus::instance()->get_object_subsystem()->vessels()[index.row()];
-        bool s = false;
-        auto harbor = apparatus::instance()->get_object_subsystem()->get_dpoint(item.harbor(), s);
+        bool hs = false;
+        auto harbor = apparatus::instance()->get_object_subsystem()->get_dpoint(item.harbor(), hs);
 
         int col = index.column();
         switch (col) {
             case 0:
                 return QString::number(item.id());
             case 1:
-                return (s? harbor->title() : "##ERROR##");
+                return item.skipper();
             case 2:
-                return item.capacity();
+                return (hs? harbor->title() : tr("##ERROR[%1]##").arg(item.harbor()));
             case 3:
-                return item.cargo().length();
+                return item.capacity();
             case 4:
+                return item.cargo().length();
+            case 5:
                 int cvol = 0;
                 foreach (auto cargo, item.cargo()) {
                     cvol += cargo.volume();

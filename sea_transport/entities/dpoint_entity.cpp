@@ -1,5 +1,10 @@
 #include "dpoint_entity.h"
 
+
+dpoint_entity::dpoint_entity() {
+    this->_id += QRandomGenerator().generate64();
+}
+
 dpoint_entity::dpoint_entity(entity_id dispatcher_id, const QString &title) : _dispatcher_id(dispatcher_id), _title(title) {
     this->_id = dispatcher_id;
     auto hash = QCryptographicHash::hash(title.toLocal8Bit(), QCryptographicHash::Md5);
@@ -29,15 +34,24 @@ const QVector<storage_entity> dpoint_entity::storages() {
     return this->_storages;
 }
 
+storage_entity* dpoint_entity::get_storage(entity_id sid, bool &success) {
+    success = false;
+    for (int i = 0; i < this->_storages.length(); i++) {
+        if (this->_storages[i].id() != sid) {
+            continue;
+        }
+        success = true;
+        return &this->_storages[i];
+    }
+
+    return nullptr;
+}
+
 void dpoint_entity::set_storages(QVector<storage_entity> storages) {
     this->_storages = storages;
 }
 
 void dpoint_entity::remove_storage(entity_id sid) {
-//    std::remove_if(this->_storages.begin(), this->_storages.end(), [sid](storage_entity ent) {
-//        return ent.id() == sid;
-//    });
-
     QVector<storage_entity> st(this->_storages);
 
     for (int i = 0; i < st.length(); i++) {

@@ -18,8 +18,12 @@ StorageEditDialog::StorageEditDialog(QWidget *parent) : QDialog(parent), ui(new 
         }
 
         foreach (auto mIdx, sel) {
-            auto cdata = mIdx.data().toInt();
-            qDebug() << cdata << '\n';
+            auto oid = mIdx.data().toULongLong();
+            bool success;
+            this->_storage->withdraw_cargo(oid, success);
+            if (!success) {
+                QMessageBox::critical(this, "Error", "Cannot remove some of this cargo!");
+            }
         }
     });
 

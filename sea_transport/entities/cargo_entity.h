@@ -10,12 +10,12 @@
 
 class cargo_entity : public IEntity {
 private:
-    entity_id _id;
+    entity_id _id = 0;
     QString _title;
-    unsigned int _volume;
+    unsigned int _volume = 50000;
 
 public:
-    cargo_entity() = default;
+    cargo_entity();
     cargo_entity(const QString &title, unsigned int volume);
 
     entity_id id() const;

@@ -15,13 +15,13 @@ enum class UserRole {
 
 class user_entity : public IEntity {
 private:
-    entity_id _id;
+    entity_id _id = 0;
     QString _login;
     UserRole _role;
     QByteArray _pwd_hash;
 
 public:
-    user_entity() = default;
+    user_entity();
     user_entity(const QString &login, const QString &password, UserRole role);
 
     entity_id id() const;

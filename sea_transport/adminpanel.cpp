@@ -78,10 +78,51 @@ void AdminPanel::on_logout_requested() {
     this->close();
 }
 
-void AdminPanel::on_vessel_add_edit(bool /*edit*/) {
+void AdminPanel::on_vessel_add_edit(bool edit) {
+    auto selected = ui->tv_vessels->selectionModel()->selectedRows();
+    if (edit && selected.length() != 1) {
+        return;
+    }
 
+    if (apparatus::instance()->get_object_subsystem()->dpoints().isEmpty()) {
+        QMessageBox::critical(this, "Error", "No harbors to assign. At least one required.");
+        return;
+    }
+
+    int skippers = 0;
+    foreach (auto user, apparatus::instance()->get_auth_subsystem()->users()) {
+        skippers += user.role() == UserRole::SKIPPER;
+    }
+    if (skippers == 0) {
+        QMessageBox::critical(this, "Error", "No skippers to assign. At least one required.");
+        return;
+    }
+
+    vessel_entity ves;
+    if (edit) {
+        int idx = selected[0].row();
+        ves = apparatus::instance()->get_object_subsystem()->vessels()[idx];
+    }
+
+    VesselEditDialog ved(this);
+    ved.setWindowTitle(edit? "Edit vessel" : "New vessel");
+    ved.set_vessel(&ves, edit);
+    if (ved.exec() != UserEditDialog::Accepted) {
+        return;
+    }
+
+    auto data = ved.vessel();
+    if (edit) {
+        apparatus::instance()->get_object_subsystem()->remove_vessel(ves.id());
+        QMessageBox::information(this, "Info", "Vessel edited successfully");
+    }
+    else {
+        QMessageBox::information(this, "Info", "Vessel created successfully");
+    }
+    apparatus::instance()->get_object_subsystem()->add_vessel(*data);
 
     vvm->update();
+    dpvm->update();
 }
 
 void AdminPanel::on_vessel_remove() {

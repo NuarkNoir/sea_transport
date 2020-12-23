@@ -12,12 +12,12 @@ class storage_entity : public IEntity {
 private:
     static entity_id __global_id;
 
-    entity_id _id;
+    entity_id _id = 0;
     unsigned int _capacity = 500000;
     QVector<cargo_entity> _cargo;
 
 public:
-    storage_entity() = default;
+    storage_entity();
     storage_entity(unsigned int capacity);
 
     entity_id id() const;
