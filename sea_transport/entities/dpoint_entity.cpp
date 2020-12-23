@@ -6,6 +6,7 @@ dpoint_entity::dpoint_entity(entity_id dispatcher_id, const QString &title) : _d
     for (auto bit : hash) {
         this->_id += bit;
     }
+    this->_id += QRandomGenerator().generate64();
 }
 
 entity_id dpoint_entity::id() const {
@@ -33,9 +34,20 @@ void dpoint_entity::set_storages(QVector<storage_entity> storages) {
 }
 
 void dpoint_entity::remove_storage(entity_id sid) {
-    std::remove_if(this->_storages.begin(), this->_storages.end(), [sid](storage_entity ent) {
-        return ent.id() == sid;
-    });
+//    std::remove_if(this->_storages.begin(), this->_storages.end(), [sid](storage_entity ent) {
+//        return ent.id() == sid;
+//    });
+
+    QVector<storage_entity> st(this->_storages);
+
+    for (int i = 0; i < st.length(); i++) {
+        if (st[i].id() == sid) {
+            st.removeAt(i);
+            break;
+        }
+    }
+
+    this->set_storages(st);
 }
 
 void dpoint_entity::add_storage(storage_entity ent) {

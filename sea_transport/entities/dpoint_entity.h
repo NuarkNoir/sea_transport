@@ -6,6 +6,7 @@
 
 #include <QString>
 #include <QVector>
+#include <QRandomGenerator>
 #include <QCryptographicHash>
 
 

@@ -21,16 +21,7 @@ DeliveryPointEditDialog::DeliveryPointEditDialog(QWidget *parent) : QDialog(pare
 
         foreach (auto mIdx, sel) {
             auto cuid = mIdx.data().toString().toULongLong();
-            auto st = this->_dp->storages();
-
-            for (int i = 0; i < st.length(); i++) {
-                if (st[i].id() == cuid) {
-                    st.removeAt(i);
-                    break;
-                }
-            }
-
-            this->_dp->set_storages(st);
+            this->_dp->remove_storage(cuid);
         }
         this->update_list();
     });
@@ -73,7 +64,6 @@ void DeliveryPointEditDialog::on_storage_edit_add(bool edit) {
     if (edit) {
         int idx = selected[0].row();
         stor = this->_dp->storages()[idx];
-        this->_dp->remove_storage(stor.id());
     }
 
     StorageEditDialog sed(this);

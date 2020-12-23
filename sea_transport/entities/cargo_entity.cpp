@@ -6,6 +6,7 @@ cargo_entity::cargo_entity(const QString &title, unsigned int volume) : _title(t
     for (auto bit : hash) {
         this->_id += bit;
     }
+    this->_id += QRandomGenerator().generate64();
 }
 
 entity_id cargo_entity::id() const {

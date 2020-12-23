@@ -80,6 +80,8 @@ void AdminPanel::on_logout_requested() {
 
 void AdminPanel::on_vessel_add_edit(bool /*edit*/) {
 
+
+    vvm->update();
 }
 
 void AdminPanel::on_vessel_remove() {
@@ -99,8 +101,8 @@ void AdminPanel::on_vessel_remove() {
     }
 
     foreach (auto mIdx, selected) {
-        int idx = mIdx.row();
-        qDebug() << idx << ' ' << mIdx.data() << '\n';
+        entity_id oid = mIdx.data().toULongLong();
+        apparatus::instance()->get_object_subsystem()->remove_vessel(oid);
     }
 
     vvm->update();
@@ -210,7 +212,10 @@ void AdminPanel::on_delivery_point_add_edit(bool edit) {
     if (edit) {
         bool success;
         auto dp = apparatus::instance()->get_object_subsystem()->get_dpoint(dpoint.id(), success);
-        if (!success) {
+        if (success) {
+            QMessageBox::information(this, "Info", "Successfully edited delivery point");
+        }
+        else {
             QMessageBox::critical(this, "Error", "Error editing delivery point");
             return;
         }
@@ -219,7 +224,14 @@ void AdminPanel::on_delivery_point_add_edit(bool edit) {
         dp->set_storages(data->storages());
     }
     else {
-        apparatus::instance()->get_object_subsystem()->add_dpoint(*data);
+        bool success = apparatus::instance()->get_object_subsystem()->add_dpoint(*data);
+        if (success) {
+            QMessageBox::information(this, "Info", "Successfully created delivery point");
+        }
+        else {
+            QMessageBox::critical(this, "Error", "Error creating delivery point");
+            return;
+        }
     }
 
     dpvm->update();

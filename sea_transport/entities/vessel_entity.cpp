@@ -4,7 +4,7 @@
 entity_id vessel_entity::__global_id = 0;
 
 vessel_entity::vessel_entity(entity_id skipper_id, entity_id harbor_id, unsigned int capacity) : _skipper_id(skipper_id), _harbor_id(harbor_id), _capacity(capacity) {
-    this->_id = ++vessel_entity::__global_id;
+    this->_id = ++vessel_entity::__global_id + QRandomGenerator().generate64();
 }
 
 entity_id vessel_entity::id() const {

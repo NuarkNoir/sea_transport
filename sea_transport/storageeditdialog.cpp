@@ -5,14 +5,14 @@ StorageEditDialog::StorageEditDialog(QWidget *parent) : QDialog(parent), ui(new 
     ui->setupUi(this);
 
     this->cvm = new CargoViewModel(this);
-    ui->lv_cargo->setModel(this->cvm);
+    ui->tv_cargo->setModel(this->cvm);
 
-    connect(ui->lv_cargo->selectionModel(), &QItemSelectionModel::selectionChanged, [this](const QItemSelection &selected) {
+    connect(ui->tv_cargo->selectionModel(), &QItemSelectionModel::selectionChanged, [this](const QItemSelection &selected) {
         ui->pb_cargo_remove->setEnabled(selected.length() > 0);
     });
 
     connect(ui->pb_cargo_remove, &QPushButton::clicked, [this]() {
-        auto sel = ui->lv_cargo->selectionModel()->selectedRows();
+        auto sel = ui->tv_cargo->selectionModel()->selectedRows();
         if (sel.length() == 0) {
             return;
         }
@@ -44,6 +44,8 @@ void StorageEditDialog::set_storage(storage_entity *ent, bool edit) {
         ui->sb_capacity->setValue(ent->capacity());
         this->cvm->set_data(this->_storage->cargo());
     }
+
+    ui->lab_capacity_current->setText(QString::number(this->_storage->capacity()));
 }
 
 void StorageEditDialog::on_cargo_add() {

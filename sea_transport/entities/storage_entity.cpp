@@ -4,7 +4,7 @@
 entity_id storage_entity::__global_id = 0;
 
 storage_entity::storage_entity(unsigned int capacity) : _capacity(capacity) {
-    this->_id = ++storage_entity::__global_id;
+    this->_id = ++storage_entity::__global_id + QRandomGenerator().generate64();
 }
 
 

@@ -5,6 +5,8 @@
 #include "cargo_entity.h"
 #include "dpoint_entity.h"
 
+#include <QRandomGenerator>
+
 
 class vessel_entity : public IEntity {
 private:

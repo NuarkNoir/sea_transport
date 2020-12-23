@@ -5,7 +5,7 @@
 #include "cargo_entity.h"
 
 #include <QVector>
-#include <QCryptographicHash>
+#include <QRandomGenerator>
 
 
 class storage_entity : public IEntity {
@@ -13,7 +13,7 @@ private:
     static entity_id __global_id;
 
     entity_id _id;
-    unsigned int _capacity;
+    unsigned int _capacity = 500000;
     QVector<cargo_entity> _cargo;
 
 public:

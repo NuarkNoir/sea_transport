@@ -4,6 +4,7 @@
 #include "IEntity.h"
 
 #include <QString>
+#include <QRandomGenerator>
 #include <QCryptographicHash>
 
 
