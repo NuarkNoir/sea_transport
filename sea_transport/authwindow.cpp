@@ -61,8 +61,11 @@ void AuthWindow::on_auth_requested() {
         ((AdminPanel*) w)->set_user(*user);
     }
     else if (user->role() == UserRole::SKIPPER) {
-        //  SkipperPanel(nullptr, user).set_user(user).show();
-        return;
+        QMessageBox::information(this, "Info", "Please note: if you have more than one vessel assigned to you "
+                                               "only first will be shown (it is intended by design, you cannot physically control two ships). \n"
+                                               "Please, ask your local dispatcher/administrator to unassign you from other vessels.");
+        w = new SkipperPanel(nullptr);
+        ((SkipperPanel*) w)->set_user(*user);
     }
     else {
         QMessageBox::critical(this, "Error", "Deserialized user have wrong type. "

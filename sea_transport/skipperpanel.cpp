@@ -10,6 +10,8 @@ SkipperPanel::SkipperPanel(QWidget *parent) : QMainWindow(parent), ui(new Ui::Sk
 
     cvm = new CargoViewModel(this);
     ui->tv_cargo->setModel(this->cvm);
+
+    connect(this, &SkipperPanel::user_set, this, &SkipperPanel::on_user_set);
 }
 
 SkipperPanel::~SkipperPanel() {
@@ -66,7 +68,7 @@ void SkipperPanel::on_user_set() {
    foreach (auto c, vessel.cargo()) {
        cap_used += c.volume();
    }
-   ui->lab_capacity->setText(tr("%1/%2/%3").arg(cap_used, vessel.capacity(), vessel.capacity() + cap_used));
+   ui->lab_capacity->setText(tr("%1/%2/%3").arg(cap_used).arg(vessel.capacity() - cap_used).arg(vessel.capacity()));
 
    this->cvm->set_data(vessel.cargo());
 }
