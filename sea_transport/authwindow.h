@@ -4,6 +4,7 @@
 #include "system/apparatus.h"
 
 #include "adminpanel.h"
+#include "skipperpanel.h"
 
 #include <QMainWindow>
 #include <QMessageBox>
