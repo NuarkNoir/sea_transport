@@ -19,6 +19,7 @@ SOURCES += \
     entities/user_entity.cpp \
     entities/vessel_entity.cpp \
     main.cpp \
+    skipperpanel.cpp \
     storageeditdialog.cpp \
     system/apparatus.cpp \
     system/auth_system.cpp \
@@ -42,6 +43,7 @@ HEADERS += \
     entities/storage_entity.h \
     entities/user_entity.h \
     entities/vessel_entity.h \
+    skipperpanel.h \
     storageeditdialog.h \
     system/apparatus.h \
     system/auth_system.h \
@@ -58,6 +60,7 @@ FORMS += \
     authwindow.ui \
     cargoeditdialog.ui \
     deliverypointeditdialog.ui \
+    skipperpanel.ui \
     storageeditdialog.ui \
     usereditdialog.ui \
     vesseleditdialog.ui
