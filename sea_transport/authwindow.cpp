@@ -57,8 +57,8 @@ void AuthWindow::on_auth_requested() {
         ((AdminPanel*) w)->set_user(*user);
     }
     else if (user->role() == UserRole::DISPATCHER) {
-        //  DispatcherPanel(nullptr, user).set_user(user).show();
-        return;
+        w = new AdminPanel(nullptr);
+        ((AdminPanel*) w)->set_user(*user);
     }
     else if (user->role() == UserRole::SKIPPER) {
         //  SkipperPanel(nullptr, user).set_user(user).show();
