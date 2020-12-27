@@ -20,8 +20,7 @@ namespace Ui {
     class AdminPanel;
 }
 
-class AdminPanel : public QMainWindow
-{
+class AdminPanel : public QMainWindow {
     Q_OBJECT
 
     user_entity user;
@@ -36,7 +35,11 @@ public:
 
     AdminPanel& set_user(const user_entity &user);
 
+signals:
+    void user_set();
+
 private slots:
+    void on_user_set();
 
 private:
     Ui::AdminPanel *ui;

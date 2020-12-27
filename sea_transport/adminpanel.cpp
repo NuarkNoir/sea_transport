@@ -57,7 +57,7 @@ AdminPanel::AdminPanel(QWidget *parent) : QMainWindow(parent), ui(new Ui::AdminP
         ui->pb_dp_edit->setEnabled(selected.length() == 1);
     });
 
-    ui->tw_tabs->setCurrentIndex(0);
+    connect(this, &AdminPanel::user_set, this, &AdminPanel::on_user_set);
 }
 
 AdminPanel::~AdminPanel() {
@@ -71,7 +71,27 @@ AdminPanel::~AdminPanel() {
 AdminPanel& AdminPanel::set_user(const user_entity &user) {
     this->user = user;
     ui->lab_user->setText(tr("Hello, **%1**").arg(user.login()));
+
+    emit user_set();
+
     return *this;
+}
+
+void AdminPanel::on_user_set() {
+    UserRole urole = this->user.role();
+    switch (urole) {
+        case UserRole::ADMINISTRATOR:
+            ui->tw_tabs->setCurrentIndex(0);
+            break;
+        case UserRole::DISPATCHER:
+            ui->tw_tabs->setTabVisible(0, false);
+            ui->tw_tabs->setCurrentIndex(1);
+            break;
+        case UserRole::SKIPPER:
+            QMessageBox::critical(this, "Error", "You shouldn't be here!");
+            close();
+            break;
+    }
 }
 
 void AdminPanel::on_logout_requested() {
