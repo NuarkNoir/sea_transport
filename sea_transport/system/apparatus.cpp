@@ -110,5 +110,10 @@ void apparatus::init() {
 }
 
 void apparatus::shutdown() {
-    delete apparatus::_instance;
+    apparatus::instance()->save();
+    if (apparatus::isFirstRun() && apparatus::instance()->get_auth_subsystem()->users().length() > 0) {
+        apparatus::generate_lock_file();
+    }
+//    delete apparatus::_instance;
+    apparatus::_instance = nullptr;
 }

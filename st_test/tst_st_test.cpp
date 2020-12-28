@@ -7,6 +7,8 @@
 #include "../sea_transport/entities/user_entity.h"
 
 #include "../sea_transport/system/apparatus.h"
+#include "../sea_transport/system/auth_system.h"
+#include "../sea_transport/system/object_system.h"
 
 #include <QFile>
 #include <QDataStream>
@@ -14,6 +16,7 @@
 class st_test : public QObject
 {
     Q_OBJECT
+    dpoint_entity *p;
 
 public:
     st_test();
@@ -30,14 +33,22 @@ private slots:
     void user_entity_serialization_test();
 
     void user_entity_password_verification_test();
+
     void apparatus_check_null_throws_error();
+
     void apparatus_check_first_run();
-    void apparatus_check_auth_subsystem();
-    void apparatus_check_object_subsystem();
+    void apparatus_check_first_registration();
+    void apparatus_check_not_first_run();
+    void apparatus_check_first_registered_user();
+    void apparatus_check_remove_user();
+
+    void object_subsystem_check_add_dpoint();
+    void object_subsystem_check_find_dpoint();
+    void object_subsystem_check_remove_dpoint();
 };
 
 st_test::st_test() {
-
+    this->p = new dpoint_entity(0, "test");
 }
 
 st_test::~st_test() {
@@ -47,17 +58,19 @@ st_test::~st_test() {
 //=================================================
 void st_test::initTestCase() {
     QVERIFY2(
-        !QFile("data.bin").exists(),
-        "There should be no data file!"
+        !QFile("data.bin").exists() && !QFile("lock").exists(),
+        "There should be no data and lock file!"
     );
+
 }
 
 void st_test::cleanupTestCase() {
     QVERIFY2(
-        QFile("data.bin").exists(),
-        "There should be a data file!"
+        QFile("data.bin").exists() && QFile("lock").exists(),
+        "There should be data and lock file!"
     );
     QFile().remove("data.bin");
+    QFile().remove("lock");
 }
 
 //=================================================
@@ -236,49 +249,75 @@ void st_test::apparatus_check_null_throws_error() {
 
 void st_test::apparatus_check_first_run() {
     apparatus::init();
-    QVERIFY2(
-        apparatus::instance()->isFirstRun(),
-        "Not a first run!"
-    );
+    QVERIFY(apparatus::instance()->isFirstRun());
     apparatus::shutdown();
 }
 
-void st_test::apparatus_check_auth_subsystem() {
+void st_test::apparatus_check_first_registration() {
     apparatus::init();
     auto as = apparatus::instance()->get_auth_subsystem();
-    {
-        bool test = as->register_user("testor", "passwd", UserRole::ADMINISTRATOR);
-        QVERIFY(test);
-    }
-    {
-        bool test;
-        as->get_user("testor", test);
-        QVERIFY(test);
-    }
-    {
-        bool test = as->remove_user("testor");
-        QVERIFY(test);
-    }
+
+    bool test = as->register_user("testor", "passwd", UserRole::ADMINISTRATOR);
+    QVERIFY(test);
+
     apparatus::shutdown();
 }
 
-void st_test::apparatus_check_object_subsystem() {
+void st_test::apparatus_check_not_first_run() {
     apparatus::init();
+    QVERIFY(!apparatus::instance()->isFirstRun());
+    apparatus::shutdown();
+}
+
+void st_test::apparatus_check_first_registered_user() {
+    apparatus::init();
+    auto as = apparatus::instance()->get_auth_subsystem();
+
+    bool test;
+    auto user = as->get_user("testor", test);
+    QVERIFY(test && user->role() == UserRole::ADMINISTRATOR);
+
+    apparatus::shutdown();
+}
+
+void st_test::apparatus_check_remove_user() {
+    apparatus::init();
+    auto as = apparatus::instance()->get_auth_subsystem();
+
+    bool test = as->remove_user("testor");
+    QVERIFY(test);
+
+    apparatus::shutdown();
+}
+
+void st_test::object_subsystem_check_add_dpoint() {
+    apparatus::init();
+
     auto os = apparatus::instance()->get_object_subsystem();
-    dpoint_entity p(0, "test");
-    {
-        bool test = os->add_dpoint(p);
-        QVERIFY(test);
-    }
-    {
-        bool test;
-        os->get_dpoint(p.id(), test);
-        QVERIFY(test);
-    }
-    {
-        bool test = os->remove_dpoint(p.id());
-        QVERIFY(test);
-    }
+    bool test = os->add_dpoint(*this->p);
+    QVERIFY(test);
+
+    apparatus::shutdown();
+}
+
+void st_test::object_subsystem_check_find_dpoint() {
+    apparatus::init();
+
+    auto os = apparatus::instance()->get_object_subsystem();
+    bool test;
+    os->get_dpoint(this->p->id(), test);
+    QVERIFY(test);
+
+    apparatus::shutdown();
+}
+
+void st_test::object_subsystem_check_remove_dpoint() {
+    apparatus::init();
+
+    auto os = apparatus::instance()->get_object_subsystem();
+    bool test = os->remove_dpoint(this->p->id());
+    QVERIFY(test);
+
     apparatus::shutdown();
 }
 
