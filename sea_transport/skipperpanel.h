@@ -10,15 +10,16 @@
 #include "entities/user_entity.h"
 #include "entities/vessel_entity.h"
 
-namespace Ui {
-    class SkipperPanel;
-}
+
+namespace Ui { class SkipperPanel; }
 
 class SkipperPanel : public QMainWindow {
+private:
     Q_OBJECT
 
-    user_entity user;
+    Ui::SkipperPanel *ui;
 
+    user_entity user;
     CargoViewModel *cvm;
 
 public:
@@ -34,8 +35,6 @@ private slots:
     void on_user_set();
 
 private:
-    Ui::SkipperPanel *ui;
-
     void on_logout_requested();
 };
 

@@ -6,7 +6,9 @@
 
 #include "entities/cargo_entity.h"
 
+
 class CargoViewModel : public QAbstractTableModel {
+private:
     Q_OBJECT
 
     QVector<cargo_entity> _data;

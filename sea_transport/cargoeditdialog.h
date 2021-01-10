@@ -6,11 +6,11 @@
 
 #include "entities/cargo_entity.h"
 
-namespace Ui {
-class CargoEditDialog;
-}
+
+namespace Ui { class CargoEditDialog; }
 
 class CargoEditDialog : public QDialog {
+private:
     Q_OBJECT
     Ui::CargoEditDialog *ui;
 

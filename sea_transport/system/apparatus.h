@@ -12,8 +12,7 @@
 #include <QDataStream>
 
 
-class apparatus
-{
+class apparatus {
 private:
     static apparatus *_instance;
     static const QString filename;
@@ -31,7 +30,7 @@ public:
     void save();
     void load();
 
-    static bool isFirstRun();
+    static bool is_first_run();
     static void generate_lock_file();
     static apparatus* instance();
     static void init();

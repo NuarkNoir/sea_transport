@@ -7,12 +7,15 @@ user_entity::user_entity() {
     this->_id = ++user_entity::__global_id + QRandomGenerator().generate64();
 }
 
-user_entity::user_entity(const QString &login, const QString &password, UserRole role) : _login(login), _role(role) {
-    this->_pwd_hash = QCryptographicHash::hash(password.toLocal8Bit(), QCryptographicHash::Sha3_256);
+user_entity::user_entity(const QString &login, const QString &password, UserRole role)
+    : _login(login), _role(role) {
+    this->_pwd_hash = QCryptographicHash::hash(password.toLocal8Bit(),
+                                               QCryptographicHash::Sha3_256);
     foreach (auto bit, this->_pwd_hash) {
         this->_id += bit;
     }
-    foreach (auto bit, QCryptographicHash::hash(login.toLocal8Bit(), QCryptographicHash::Sha3_256)) {
+    foreach (auto bit,
+             QCryptographicHash::hash(login.toLocal8Bit(), QCryptographicHash::Sha3_256)) {
         this->_id += bit;
     }
     this->_id +=  QRandomGenerator().generate64();
@@ -31,11 +34,13 @@ UserRole user_entity::role() const {
 }
 
 bool user_entity::verify_password(const QString &password) const {
-    return (this->_pwd_hash == QCryptographicHash::hash(password.toLocal8Bit(), QCryptographicHash::Sha3_256));
+    return (this->_pwd_hash == QCryptographicHash::hash(password.toLocal8Bit(),
+                                                        QCryptographicHash::Sha3_256));
 }
 
 void user_entity::set_password(const QString &new_password) {
-    this->_pwd_hash = QCryptographicHash::hash(new_password.toLocal8Bit(), QCryptographicHash::Sha3_256);
+    this->_pwd_hash = QCryptographicHash::hash(new_password.toLocal8Bit(),
+                                               QCryptographicHash::Sha3_256);
 }
 
 void user_entity::set_role(UserRole new_role) {

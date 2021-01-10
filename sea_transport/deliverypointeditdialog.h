@@ -13,18 +13,15 @@
 #include "storageeditdialog.h"
 
 
-namespace Ui {
-class DeliveryPointEditDialog;
-}
+namespace Ui { class DeliveryPointEditDialog; }
 
 class DeliveryPointEditDialog : public QDialog {
+private:
     Q_OBJECT
     Ui::DeliveryPointEditDialog *ui;
 
     QStringListModel *svm;
     dpoint_entity *_dp;
-
-    void update_list();
 
 public:
     explicit DeliveryPointEditDialog(QWidget *parent = nullptr);
@@ -37,6 +34,9 @@ public slots:
     void on_storage_edit_add(bool edit);
 
     void accept() Q_DECL_OVERRIDE;
+
+private:
+    void update_list();
 };
 
 #endif // DELIVERYPOINTEDITDIALOG_H

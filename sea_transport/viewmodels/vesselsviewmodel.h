@@ -5,7 +5,9 @@
 
 #include <QAbstractTableModel>
 
+
 class VesselsViewModel : public QAbstractTableModel {
+private:
     Q_OBJECT
 
 public:

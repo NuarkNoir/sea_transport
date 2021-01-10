@@ -5,7 +5,6 @@
 SkipperPanel::SkipperPanel(QWidget *parent) : QMainWindow(parent), ui(new Ui::SkipperPanel) {
     ui->setupUi(this);
 
-
     connect(ui->pb_logout, &QPushButton::clicked, this, &SkipperPanel::on_logout_requested);
 
     cvm = new CargoViewModel(this);
@@ -52,23 +51,27 @@ void SkipperPanel::on_user_set() {
     }
 
    if (!success) {
-        QMessageBox::critical(this, "Error", "You are not assigned to vessel. \n"
-                                             "Ask you local dispatcher/administrator to do it. \n"
-                                             "System will now close.");
+        QMessageBox::critical(this, "Error",
+                              "You are not assigned to vessel. \nAsk you local "
+                              "dispatcher/administrator to do it. \nSystem will now close.");
         this->close();
    }
 
    ui->lab_vid->setText(QString::number(vessel.id()));
 
    bool h_success;
-   auto harbor = apparatus::instance()->get_object_subsystem()->get_dpoint(vessel.harbor(), h_success);
+   auto harbor = apparatus::instance()->get_object_subsystem()
+                    ->get_dpoint(vessel.harbor(), h_success);
    ui->lab_harbor->setText(h_success? harbor->title() : "#UNKNOWN#");
 
    int cap_used = 0;
    foreach (auto c, vessel.cargo()) {
        cap_used += c.volume();
    }
-   ui->lab_capacity->setText(tr("%1/%2/%3").arg(cap_used).arg(vessel.capacity() - cap_used).arg(vessel.capacity()));
+   ui->lab_capacity->setText(tr("%1/%2/%3")
+                             .arg(cap_used)
+                             .arg(vessel.capacity() - cap_used)
+                             .arg(vessel.capacity()));
 
    this->cvm->set_data(vessel.cargo());
 }

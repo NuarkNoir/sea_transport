@@ -7,8 +7,7 @@
 #include "../entities/vessel_entity.h"
 
 
-class object_system
-{
+class object_system {
 private:
     QVector<dpoint_entity> _dpoints;
     QVector<vessel_entity> _vessels;

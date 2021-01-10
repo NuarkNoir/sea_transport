@@ -16,12 +16,14 @@
 #include "entities/user_entity.h"
 #include "entities/dpoint_entity.h"
 
-namespace Ui {
-    class AdminPanel;
-}
+
+namespace Ui { class AdminPanel; }
 
 class AdminPanel : public QMainWindow {
+private:
     Q_OBJECT
+
+    Ui::AdminPanel *ui;
 
     user_entity user;
 
@@ -42,8 +44,6 @@ private slots:
     void on_user_set();
 
 private:
-    Ui::AdminPanel *ui;
-
     void on_logout_requested();
 
     void on_vessel_add_edit(bool edit);

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.13.3, 2020-12-30T12:27:51. -->
+<!-- Written by QtCreator 4.13.3, 2021-01-10T19:49:10. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -64,7 +64,26 @@
     <value type="bool" key="AutoTest.Framework.QtQuickTest">true</value>
     <value type="bool" key="AutoTest.Framework.QtTest">true</value>
    </valuemap>
-   <valuemap type="QVariantMap" key="AutoTest.CheckStates"/>
+   <valuemap type="QVariantMap" key="AutoTest.CheckStates">
+    <value type="Qt::CheckState" key="C:/Users/Admin/Documents/repos/sea_transport_project/st_test/tst_st_test.cpp:apparatus_check_first_registered_user">Checked</value>
+    <value type="Qt::CheckState" key="C:/Users/Admin/Documents/repos/sea_transport_project/st_test/tst_st_test.cpp:apparatus_check_first_registration">Checked</value>
+    <value type="Qt::CheckState" key="C:/Users/Admin/Documents/repos/sea_transport_project/st_test/tst_st_test.cpp:apparatus_check_first_run">Checked</value>
+    <value type="Qt::CheckState" key="C:/Users/Admin/Documents/repos/sea_transport_project/st_test/tst_st_test.cpp:apparatus_check_not_first_run">Checked</value>
+    <value type="Qt::CheckState" key="C:/Users/Admin/Documents/repos/sea_transport_project/st_test/tst_st_test.cpp:apparatus_check_null_throws_error">Checked</value>
+    <value type="Qt::CheckState" key="C:/Users/Admin/Documents/repos/sea_transport_project/st_test/tst_st_test.cpp:apparatus_check_remove_user">Checked</value>
+    <value type="Qt::CheckState" key="C:/Users/Admin/Documents/repos/sea_transport_project/st_test/tst_st_test.cpp:cargo_entity_serialization_test">Checked</value>
+    <value type="Qt::CheckState" key="C:/Users/Admin/Documents/repos/sea_transport_project/st_test/tst_st_test.cpp:cleanupTestCase">Unchecked</value>
+    <value type="Qt::CheckState" key="C:/Users/Admin/Documents/repos/sea_transport_project/st_test/tst_st_test.cpp:dpoint_entity_serialization_test">Checked</value>
+    <value type="Qt::CheckState" key="C:/Users/Admin/Documents/repos/sea_transport_project/st_test/tst_st_test.cpp:initTestCase">Unchecked</value>
+    <value type="Qt::CheckState" key="C:/Users/Admin/Documents/repos/sea_transport_project/st_test/tst_st_test.cpp:object_subsystem_check_add_dpoint">Checked</value>
+    <value type="Qt::CheckState" key="C:/Users/Admin/Documents/repos/sea_transport_project/st_test/tst_st_test.cpp:object_subsystem_check_find_dpoint">Checked</value>
+    <value type="Qt::CheckState" key="C:/Users/Admin/Documents/repos/sea_transport_project/st_test/tst_st_test.cpp:object_subsystem_check_remove_dpoint">Checked</value>
+    <value type="Qt::CheckState" key="C:/Users/Admin/Documents/repos/sea_transport_project/st_test/tst_st_test.cpp:st_test">Checked</value>
+    <value type="Qt::CheckState" key="C:/Users/Admin/Documents/repos/sea_transport_project/st_test/tst_st_test.cpp:storage_entity_serialization_test">Checked</value>
+    <value type="Qt::CheckState" key="C:/Users/Admin/Documents/repos/sea_transport_project/st_test/tst_st_test.cpp:user_entity_password_verification_test">Checked</value>
+    <value type="Qt::CheckState" key="C:/Users/Admin/Documents/repos/sea_transport_project/st_test/tst_st_test.cpp:user_entity_serialization_test">Checked</value>
+    <value type="Qt::CheckState" key="C:/Users/Admin/Documents/repos/sea_transport_project/st_test/tst_st_test.cpp:vessel_entity_serialization_test">Checked</value>
+   </valuemap>
    <value type="int" key="AutoTest.RunAfterBuild">0</value>
    <value type="bool" key="AutoTest.UseGlobal">true</value>
    <valuelist type="QVariantList" key="ClangCodeModel.CustomCommandLineKey">

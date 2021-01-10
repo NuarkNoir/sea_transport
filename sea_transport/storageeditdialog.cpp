@@ -1,15 +1,19 @@
 #include "storageeditdialog.h"
 #include "ui_storageeditdialog.h"
 
-StorageEditDialog::StorageEditDialog(QWidget *parent) : QDialog(parent), ui(new Ui::StorageEditDialog) {
+
+StorageEditDialog::StorageEditDialog(QWidget *parent)
+    : QDialog(parent), ui(new Ui::StorageEditDialog) {
     ui->setupUi(this);
 
     this->cvm = new CargoViewModel(this);
     ui->tv_cargo->setModel(this->cvm);
 
-    connect(ui->tv_cargo->selectionModel(), &QItemSelectionModel::selectionChanged, [this](const QItemSelection &selected) {
-        ui->pb_cargo_remove->setEnabled(selected.length() > 0);
-    });
+    connect(ui->tv_cargo->selectionModel(), &QItemSelectionModel::selectionChanged,
+            [this](const QItemSelection &selected) {
+                ui->pb_cargo_remove->setEnabled(selected.length() > 0);
+            }
+    );
 
     connect(ui->pb_cargo_remove, &QPushButton::clicked, [this]() {
         auto sel = ui->tv_cargo->selectionModel()->selectedRows();

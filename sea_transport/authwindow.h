@@ -9,20 +9,20 @@
 #include <QMainWindow>
 #include <QMessageBox>
 
-namespace Ui {
-class AuthWindow;
-}
+
+namespace Ui { class AuthWindow; }
 
 class AuthWindow : public QMainWindow {
+private:
     Q_OBJECT
+
+    Ui::AuthWindow *ui;
 
 public:
     explicit AuthWindow(QWidget *parent = nullptr);
     ~AuthWindow();
 
 private:
-    Ui::AuthWindow *ui;
-
     void on_auth_requested();
 };
 

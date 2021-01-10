@@ -6,8 +6,7 @@
 #include "../entities/user_entity.h"
 
 
-class auth_system
-{
+class auth_system {
 private:
     QVector<user_entity> _users;
 public:

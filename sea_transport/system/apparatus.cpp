@@ -77,7 +77,7 @@ void apparatus::load() {
     f.close();
 }
 
-bool apparatus::isFirstRun() {
+bool apparatus::is_first_run() {
     return !QFile().exists("lock");
 }
 
@@ -94,7 +94,7 @@ void apparatus::init() {
         throw std::runtime_error("System already initialized!");
     }
 
-    bool fr = apparatus::isFirstRun();
+    bool fr = apparatus::is_first_run();
     apparatus::_instance = new apparatus();
 
     if (fr) {
@@ -111,9 +111,10 @@ void apparatus::init() {
 
 void apparatus::shutdown() {
     apparatus::instance()->save();
-    if (apparatus::isFirstRun() && apparatus::instance()->get_auth_subsystem()->users().length() > 0) {
+    if (apparatus::is_first_run()
+            && apparatus::instance()->get_auth_subsystem()->users().length() > 0) {
         apparatus::generate_lock_file();
     }
-//    delete apparatus::_instance;
+
     apparatus::_instance = nullptr;
 }

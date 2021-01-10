@@ -5,7 +5,9 @@
 
 #include <QAbstractTableModel>
 
+
 class UsersViewModel : public QAbstractTableModel {
+private:
     Q_OBJECT
 
 public:

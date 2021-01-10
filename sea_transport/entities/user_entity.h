@@ -12,7 +12,6 @@ enum class UserRole {
     ADMINISTRATOR, DISPATCHER, SKIPPER
 };
 
-
 class user_entity : public IEntity {
 private:
     static entity_id __global_id;

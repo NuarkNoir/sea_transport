@@ -10,19 +10,16 @@
 #include "viewmodels/cargoviewmodel.h"
 #include "cargoeditdialog.h"
 
-namespace Ui {
-class VesselEditDialog;
-}
+
+namespace Ui { class VesselEditDialog; }
 
 class VesselEditDialog : public QDialog {
+private:
     Q_OBJECT
     Ui::VesselEditDialog *ui;
 
     CargoViewModel *cvm;
     vessel_entity *_vessel;
-
-    void select_proper_skipper();
-    void select_proper_port();
 
 public:
     explicit VesselEditDialog(QWidget *parent = nullptr);
@@ -36,6 +33,10 @@ public slots:
     void on_withdraw_from_harbor();
     void on_withdraw_from_vessel();
     void accept() Q_DECL_OVERRIDE;
+
+private:
+    void select_proper_skipper();
+    void select_proper_port();
 };
 
 #endif // VESSELEDITDIALOG_H

@@ -7,9 +7,7 @@
 #include "entities/user_entity.h"
 
 
-namespace Ui {
-class UserEditDialog;
-}
+namespace Ui { class UserEditDialog; }
 
 struct user_data_struct {
     QString login;
@@ -19,6 +17,7 @@ struct user_data_struct {
 };
 
 class UserEditDialog : public QDialog {
+private:
     Q_OBJECT
     Ui::UserEditDialog *ui;
 

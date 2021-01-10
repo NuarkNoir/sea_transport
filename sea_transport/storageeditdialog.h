@@ -10,11 +10,10 @@
 #include "cargoeditdialog.h"
 
 
-namespace Ui {
-class StorageEditDialog;
-}
+namespace Ui { class StorageEditDialog; }
 
 class StorageEditDialog : public QDialog {
+private:
     Q_OBJECT
     Ui::StorageEditDialog *ui;
 
