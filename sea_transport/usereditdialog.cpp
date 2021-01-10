@@ -44,6 +44,9 @@ void UserEditDialog::accept() {
         case 2:
             role = UserRole::SKIPPER;
             break;
+        default:
+            QMessageBox::critical(this, "Error", "Role not selected");
+            return;
     }
     bool emptyTitle = ui->et_login->text().trimmed().isEmpty();
     bool emptyPassword = ui->et_password->text().trimmed().isEmpty();
