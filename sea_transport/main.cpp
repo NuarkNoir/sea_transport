@@ -4,6 +4,13 @@
 #include <QApplication>
 
 
+/**
+ * @brief Main entry point for application
+ * 
+ * @param argc command line args count
+ * @param argv command line args
+ * @return int exit code
+ */
 int main(int argc, char *argv[]) {
     QApplication a(argc, argv);
 
