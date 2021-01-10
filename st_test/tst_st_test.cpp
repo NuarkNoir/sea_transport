@@ -249,7 +249,7 @@ void st_test::apparatus_check_null_throws_error() {
 
 void st_test::apparatus_check_first_run() {
     apparatus::init();
-    QVERIFY(apparatus::instance()->isFirstRun());
+    QVERIFY(apparatus::instance()->is_first_run());
     apparatus::shutdown();
 }
 
@@ -265,7 +265,7 @@ void st_test::apparatus_check_first_registration() {
 
 void st_test::apparatus_check_not_first_run() {
     apparatus::init();
-    QVERIFY(!apparatus::instance()->isFirstRun());
+    QVERIFY(!apparatus::instance()->is_first_run());
     apparatus::shutdown();
 }
 

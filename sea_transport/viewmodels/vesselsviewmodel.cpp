@@ -1,5 +1,6 @@
 #include "vesselsviewmodel.h"
 
+
 VesselsViewModel::VesselsViewModel(QObject *parent) : QAbstractTableModel(parent) {
 
 }
@@ -35,8 +36,8 @@ QVariant VesselsViewModel::headerData(int section, Qt::Orientation orientation, 
 QVariant VesselsViewModel::data(const QModelIndex &index, int role) const {
     if (role == Qt::DisplayRole) {
         auto item = apparatus::instance()->get_object_subsystem()->vessels()[index.row()];
-        bool hs = false;
-        auto harbor = apparatus::instance()->get_object_subsystem()->get_dpoint(item.harbor(), hs);
+        bool s = false;
+        auto harbor = apparatus::instance()->get_object_subsystem()->get_dpoint(item.harbor(), s);
 
         int col = index.column();
         switch (col) {
@@ -45,7 +46,7 @@ QVariant VesselsViewModel::data(const QModelIndex &index, int role) const {
             case 1:
                 return item.skipper();
             case 2:
-                return (hs? harbor->title() : tr("##ERROR[%1]##").arg(item.harbor()));
+                return (s? harbor->title() : tr("##ERROR[%1]##").arg(item.harbor()));
             case 3:
                 return item.capacity();
             case 4:

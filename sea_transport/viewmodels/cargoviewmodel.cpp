@@ -1,5 +1,6 @@
 #include "cargoviewmodel.h"
 
+
 CargoViewModel::CargoViewModel(QObject *parent) : QAbstractTableModel(parent) {
 
 }

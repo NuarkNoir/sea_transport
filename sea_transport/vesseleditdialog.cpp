@@ -1,15 +1,19 @@
 #include "vesseleditdialog.h"
 #include "ui_vesseleditdialog.h"
 
-VesselEditDialog::VesselEditDialog(QWidget *parent) : QDialog(parent), ui(new Ui::VesselEditDialog) {
+
+VesselEditDialog::VesselEditDialog(QWidget *parent)
+    : QDialog(parent), ui(new Ui::VesselEditDialog) {
     ui->setupUi(this);
 
     this->cvm = new CargoViewModel(this);
     ui->tv_cargo->setModel(this->cvm);
 
-    connect(ui->tv_cargo->selectionModel(), &QItemSelectionModel::selectionChanged, [this](const QItemSelection &selected) {
-        ui->pb_cargo_remove->setEnabled(selected.length() > 0);
-    });
+    connect(ui->tv_cargo->selectionModel(), &QItemSelectionModel::selectionChanged,
+            [this](const QItemSelection &selected) {
+                ui->pb_cargo_remove->setEnabled(selected.length() > 0);
+            }
+    );
 
     connect(ui->pb_cargo_remove, &QPushButton::clicked, [this]() {
         auto sel = ui->tv_cargo->selectionModel()->selectedRows();
@@ -40,8 +44,10 @@ VesselEditDialog::VesselEditDialog(QWidget *parent) : QDialog(parent), ui(new Ui
 
     connect(ui->pb_cargo_add, &QPushButton::clicked, this, &VesselEditDialog::on_cargo_add);
 
-    connect(ui->pb_withdraw_from_harbor, &QPushButton::clicked, this, &VesselEditDialog::on_withdraw_from_harbor);
-    connect(ui->pb_withdraw_from_vessel, &QPushButton::clicked, this, &VesselEditDialog::on_withdraw_from_vessel);
+    connect(ui->pb_withdraw_from_harbor, &QPushButton::clicked,
+            this, &VesselEditDialog::on_withdraw_from_harbor);
+    connect(ui->pb_withdraw_from_vessel, &QPushButton::clicked,
+            this, &VesselEditDialog::on_withdraw_from_vessel);
 
     connect(ui->pb_save, &QPushButton::clicked, this, &VesselEditDialog::accept);
     connect(ui->pb_discard, &QPushButton::clicked, this, &VesselEditDialog::reject);
@@ -116,11 +122,13 @@ void VesselEditDialog::on_cargo_add() {
 }
 
 void VesselEditDialog::on_withdraw_from_harbor() {
-    QMessageBox::information(this, "Note", "Please note, old storage will be used.\n"
-                                           "Also, movement cannot be undone by discarding vessel edit dialog");
+    QMessageBox::information(this, "Note",
+                             "Please note, old storage will be used.\nAlso, movement cannot be "
+                             "undone by discarding vessel edit dialog");
 
     bool success;
-    auto dpoint = apparatus::instance()->get_object_subsystem()->get_dpoint(this->_vessel->harbor(), success);
+    auto dpoint = apparatus::instance()->get_object_subsystem()
+                    ->get_dpoint(this->_vessel->harbor(), success);
     if (!success) {
         QMessageBox::critical(this, "Error", "Cannot find associated harbor in DB");
         return;
@@ -135,7 +143,8 @@ void VesselEditDialog::on_withdraw_from_harbor() {
         harbor_storage << QString::number(storage.id());
     }
     bool ok;
-    QString storage_id_str = QInputDialog::getItem(this, "Select storage", "Storages in harbor:", harbor_storage, 0, false, &ok);
+    QString storage_id_str = QInputDialog::getItem(this, "Select storage", "Storages in harbor:",
+                                                   harbor_storage, 0, false, &ok);
     if (!ok || storage_id_str.isEmpty()) {
         QMessageBox::information(this, "Aborted", "Operation aborted by user.");
         return;
@@ -156,7 +165,8 @@ void VesselEditDialog::on_withdraw_from_harbor() {
     foreach (auto storage, storage->cargo()) {
         storage_cargo << tr("%1 :%2").arg(storage.title()).arg(storage.id());
     }
-    QString cargo_id_str = QInputDialog::getItem(this, "Select cargo", "Cargo in storage:", storage_cargo, 0, false, &ok);
+    QString cargo_id_str = QInputDialog::getItem(this, "Select cargo", "Cargo in storage:",
+                                                 storage_cargo, 0, false, &ok);
     if (!ok || cargo_id_str.isEmpty()) {
         QMessageBox::information(this, "Aborted", "Operation aborted by user.");
         return;
@@ -189,11 +199,13 @@ void VesselEditDialog::on_withdraw_from_vessel() {
         return;
     }
 
-    QMessageBox::information(this, "Note", "Please note, old storage will be used.\n"
-                                           "Also, movement cannot be undone by discarding vessel edit dialog");
+    QMessageBox::information(this, "Note",
+                             "Please note, old storage will be used.\nAlso, movement cannot be "
+                             "undone by discarding vessel edit dialog");
 
     bool success;
-    auto dpoint = apparatus::instance()->get_object_subsystem()->get_dpoint(this->_vessel->harbor(), success);
+    auto dpoint = apparatus::instance()->get_object_subsystem()
+                    ->get_dpoint(this->_vessel->harbor(), success);
     if (!success) {
         QMessageBox::critical(this, "Error", "Cannot find associated harbor in DB");
         return;
@@ -204,7 +216,8 @@ void VesselEditDialog::on_withdraw_from_vessel() {
         vessel_cargo << tr("%1 :%2").arg(storage.title()).arg(storage.id());
     }
     bool ok;
-    QString cargo_id_str = QInputDialog::getItem(this, "Select cargo", "Cargo in storage:", vessel_cargo, 0, false, &ok);
+    QString cargo_id_str = QInputDialog::getItem(this, "Select cargo", "Cargo in storage:",
+                                                 vessel_cargo, 0, false, &ok);
     if (!ok || cargo_id_str.isEmpty()) {
         QMessageBox::information(this, "Aborted", "Operation aborted by user.");
         return;
@@ -221,7 +234,8 @@ void VesselEditDialog::on_withdraw_from_vessel() {
     foreach (auto storage, dpoint->storages()) {
         harbor_storage << QString::number(storage.id());
     }
-    QString storage_id_str = QInputDialog::getItem(this, "Select storage", "Storages in harbor:", harbor_storage, 0, false, &ok);
+    QString storage_id_str = QInputDialog::getItem(this, "Select storage", "Storages in harbor:",
+                                                   harbor_storage, 0, false, &ok);
     if (!ok || storage_id_str.isEmpty()) {
         QMessageBox::information(this, "Aborted", "Operation aborted by user.");
         return;

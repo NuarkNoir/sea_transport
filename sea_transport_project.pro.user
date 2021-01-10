@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.13.3, 2020-12-28T22:13:22. -->
+<!-- Written by QtCreator 4.13.3, 2021-01-10T19:49:10. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -68,7 +68,6 @@
     <value type="Qt::CheckState" key="C:/Users/Admin/Documents/repos/sea_transport_project/st_test/tst_st_test.cpp:apparatus_check_first_registered_user">Checked</value>
     <value type="Qt::CheckState" key="C:/Users/Admin/Documents/repos/sea_transport_project/st_test/tst_st_test.cpp:apparatus_check_first_registration">Checked</value>
     <value type="Qt::CheckState" key="C:/Users/Admin/Documents/repos/sea_transport_project/st_test/tst_st_test.cpp:apparatus_check_first_run">Checked</value>
-    <value type="Qt::CheckState" key="C:/Users/Admin/Documents/repos/sea_transport_project/st_test/tst_st_test.cpp:apparatus_check_first_run_no_registration">Checked</value>
     <value type="Qt::CheckState" key="C:/Users/Admin/Documents/repos/sea_transport_project/st_test/tst_st_test.cpp:apparatus_check_not_first_run">Checked</value>
     <value type="Qt::CheckState" key="C:/Users/Admin/Documents/repos/sea_transport_project/st_test/tst_st_test.cpp:apparatus_check_null_throws_error">Checked</value>
     <value type="Qt::CheckState" key="C:/Users/Admin/Documents/repos/sea_transport_project/st_test/tst_st_test.cpp:apparatus_check_remove_user">Checked</value>
@@ -110,9 +109,9 @@
    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Desktop Qt 5.15.0 MinGW 64-bit</value>
    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Desktop Qt 5.15.0 MinGW 64-bit</value>
    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">qt.qt5.5150.win64_mingw81_kit</value>
-   <value type="int" key="ProjectExplorer.Target.ActiveBuildConfiguration">0</value>
+   <value type="int" key="ProjectExplorer.Target.ActiveBuildConfiguration">1</value>
    <value type="int" key="ProjectExplorer.Target.ActiveDeployConfiguration">0</value>
-   <value type="int" key="ProjectExplorer.Target.ActiveRunConfiguration">1</value>
+   <value type="int" key="ProjectExplorer.Target.ActiveRunConfiguration">0</value>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.0">
     <value type="bool">true</value>
     <value type="int" key="EnableQmlDebugging">0</value>
@@ -175,7 +174,7 @@
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
       <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">QtProjectManager.QMakeBuildStep</value>
       <value type="QString" key="QtProjectManager.QMakeBuildStep.QMakeArguments"></value>
-      <value type="bool" key="QtProjectManager.QMakeBuildStep.QMakeForced">true</value>
+      <value type="bool" key="QtProjectManager.QMakeBuildStep.QMakeForced">false</value>
       <valuelist type="QVariantList" key="QtProjectManager.QMakeBuildStep.SelectedAbis"/>
      </valuemap>
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.1">
@@ -357,7 +356,7 @@
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory"></value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/Admin/Documents/repos/build-sea_transport_project-Desktop_Qt_5_15_0_MinGW_64_bit-Debug/sea_transport</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/Admin/Documents/repos/build-sea_transport_project-Desktop_Qt_5_15_0_MinGW_64_bit-Release/sea_transport</value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.RunConfiguration.1">
     <value type="QString" key="Analyzer.Perf.CallgraphMode">dwarf</value>
@@ -432,7 +431,7 @@
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory"></value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/Admin/Documents/repos/build-sea_transport_project-Desktop_Qt_5_15_0_MinGW_64_bit-Debug/st_test</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/Admin/Documents/repos/build-sea_transport_project-Desktop_Qt_5_15_0_MinGW_64_bit-Release/st_test</value>
    </valuemap>
    <value type="int" key="ProjectExplorer.Target.RunConfigurationCount">2</value>
   </valuemap>

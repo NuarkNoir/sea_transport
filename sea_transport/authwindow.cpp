@@ -24,7 +24,7 @@ void AuthWindow::on_auth_requested() {
     bool success = false;
     auto a = apparatus::instance()->get_auth_subsystem();
 
-    if (apparatus::isFirstRun()) {
+    if (apparatus::is_first_run()) {
         success = a->register_user(login, passw, UserRole::ADMINISTRATOR);
         if (!success) {
             QMessageBox::critical(this, "Error", "Cannot register you. Check filesystem permission");
@@ -61,9 +61,11 @@ void AuthWindow::on_auth_requested() {
         ((AdminPanel*) w)->set_user(*user);
     }
     else if (user->role() == UserRole::SKIPPER) {
-        QMessageBox::information(this, "Info", "Please note: if you have more than one vessel assigned to you "
-                                               "only first will be shown (it is intended by design, you cannot physically control two ships). \n"
-                                               "Please, ask your local dispatcher/administrator to unassign you from other vessels.");
+        QMessageBox::information(this, "Info",
+                                 "Please note: if you have more than one vessel assigned to you "
+                                 "only first will be shown (it is intended by design, you cannot "
+                                 "physically control two ships). \nPlease, ask your local "
+                                 "dispatcher/administrator to unassign you from other vessels.");
         w = new SkipperPanel(nullptr);
         ((SkipperPanel*) w)->set_user(*user);
     }

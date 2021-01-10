@@ -22,7 +22,7 @@ void UserEditDialog::set_user(user_entity* user, bool edit) {
         this->_user_data = new user_data_struct();
 
         ui->et_login->setText(user->login());
-        ui->et_password->setText("##########UNEDITED##########");
+        ui->et_password->setText("#UNEDITED#");
         ui->cb_role->setCurrentIndex((int)user->role());
         ui->cb_role->setEnabled(false);
     }
@@ -44,6 +44,9 @@ void UserEditDialog::accept() {
         case 2:
             role = UserRole::SKIPPER;
             break;
+        default:
+            QMessageBox::critical(this, "Error", "Role not selected");
+            return;
     }
     bool emptyTitle = ui->et_login->text().trimmed().isEmpty();
     bool emptyPassword = ui->et_password->text().trimmed().isEmpty();

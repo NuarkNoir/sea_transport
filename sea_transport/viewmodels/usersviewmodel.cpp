@@ -1,5 +1,6 @@
 #include "usersviewmodel.h"
 
+
 UsersViewModel::UsersViewModel(QObject *parent) : QAbstractTableModel(parent) {
 
 }

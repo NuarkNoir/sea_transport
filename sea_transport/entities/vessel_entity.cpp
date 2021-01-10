@@ -7,8 +7,10 @@ vessel_entity::vessel_entity() {
     this->_id = ++vessel_entity::__global_id + QRandomGenerator().generate64();
 }
 
-vessel_entity::vessel_entity(QString skipper, entity_id harbor_id, unsigned int capacity) : _skipper(skipper), _harbor_id(harbor_id), _capacity(capacity) {
-    this->_id = ++vessel_entity::__global_id + harbor_id + capacity + QRandomGenerator().generate64();
+vessel_entity::vessel_entity(QString skipper, entity_id harbor_id, unsigned int capacity)
+    : _skipper(skipper), _harbor_id(harbor_id), _capacity(capacity) {
+    this->_id = ++vessel_entity::__global_id + harbor_id + capacity
+                + QRandomGenerator().generate64();
 }
 
 entity_id vessel_entity::id() const {

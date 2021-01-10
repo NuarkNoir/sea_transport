@@ -2,29 +2,34 @@
 #include "ui_deliverypointeditdialog.h"
 
 
-DeliveryPointEditDialog::DeliveryPointEditDialog(QWidget *parent) : QDialog(parent), ui(new Ui::DeliveryPointEditDialog) {
+DeliveryPointEditDialog::DeliveryPointEditDialog(QWidget *parent)
+    : QDialog(parent), ui(new Ui::DeliveryPointEditDialog) {
     ui->setupUi(this);
 
     this->svm = new QStringListModel(this);
     ui->lv_storages->setModel(this->svm);
 
-    connect(ui->lv_storages->selectionModel(), &QItemSelectionModel::selectionChanged, [this](const QItemSelection &selected) {
-        ui->pb_storage_remove->setEnabled(selected.length() > 0);
-        ui->pb_storage_edit->setEnabled(selected.length() == 1);
-    });
+    connect(ui->lv_storages->selectionModel(), &QItemSelectionModel::selectionChanged,
+            [this](const QItemSelection &selected) {
+                ui->pb_storage_remove->setEnabled(selected.length() > 0);
+                ui->pb_storage_edit->setEnabled(selected.length() == 1);
+            }
+    );
 
-    connect(ui->pb_storage_remove, &QPushButton::clicked, [this]() {
-        auto sel = ui->lv_storages->selectionModel()->selectedRows();
-        if (sel.length() == 0) {
-            return;
-        }
+    connect(ui->pb_storage_remove, &QPushButton::clicked,
+            [this]() {
+                auto sel = ui->lv_storages->selectionModel()->selectedRows();
+                if (sel.length() == 0) {
+                    return;
+                }
 
-        foreach (auto mIdx, sel) {
-            auto cuid = mIdx.data().toString().toULongLong();
-            this->_dp->remove_storage(cuid);
-        }
-        this->update_list();
-    });
+                foreach (auto mIdx, sel) {
+                    auto cuid = mIdx.data().toString().toULongLong();
+                    this->_dp->remove_storage(cuid);
+                }
+                this->update_list();
+            }
+    );
 
     connect(ui->pb_storage_edit, &QPushButton::clicked, [this]() {
         this->on_storage_edit_add(true);

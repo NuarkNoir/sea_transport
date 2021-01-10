@@ -1,5 +1,6 @@
 #include "deliverypointsviewmodel.h"
 
+
 DeliveryPointsViewModel::DeliveryPointsViewModel(QObject *parent) : QAbstractTableModel(parent) {
 
 }
@@ -12,7 +13,8 @@ int DeliveryPointsViewModel::columnCount(const QModelIndex &/*parent*/) const {
     return 4;
 }
 
-QVariant DeliveryPointsViewModel::headerData(int section, Qt::Orientation orientation, int role) const {
+QVariant DeliveryPointsViewModel::headerData(int section, Qt::Orientation orientation,
+                                             int role) const {
     if (role == Qt::DisplayRole && orientation == Qt::Horizontal) {
         switch (section) {
             case 0:

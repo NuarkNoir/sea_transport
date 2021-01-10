@@ -7,7 +7,8 @@ dpoint_entity::dpoint_entity() {
     this->_id = ++dpoint_entity::__global_id + QRandomGenerator().generate64();
 }
 
-dpoint_entity::dpoint_entity(entity_id dispatcher_id, const QString &title) : _dispatcher_id(dispatcher_id), _title(title) {
+dpoint_entity::dpoint_entity(entity_id dispatcher_id, const QString &title)
+    : _dispatcher_id(dispatcher_id), _title(title) {
     this->_id = dispatcher_id;
     auto hash = QCryptographicHash::hash(title.toLocal8Bit(), QCryptographicHash::Md5);
     for (auto bit : hash) {

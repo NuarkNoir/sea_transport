@@ -10,32 +10,68 @@
 #include "entities/user_entity.h"
 #include "entities/vessel_entity.h"
 
-namespace Ui {
-    class SkipperPanel;
-}
 
+/**
+ * @brief Namespace for UI layout MOC to be generated
+ * 
+ */
+namespace Ui { class SkipperPanel; }
+
+/**
+ * @brief Skipper info panel
+ * 
+ */
 class SkipperPanel : public QMainWindow {
+private:
     Q_OBJECT
+    //! Layout object
+    Ui::SkipperPanel *ui;
 
+    //! User entity object
     user_entity user;
-
+    //! Cargo ViewModel
     CargoViewModel *cvm;
 
 public:
+    /**
+     * @brief Construct a new Skipper Panel
+     * 
+     * @param parent [ignored]
+     */
     explicit SkipperPanel(QWidget *parent = nullptr);
+    /**
+     * @brief Destroy the Skipper Panel
+     * 
+     */
     ~SkipperPanel();
 
+    /**
+     * @brief Set user object
+     * 
+     * @param user 
+     * @return SkipperPanel& 
+     */
     SkipperPanel& set_user(const user_entity &user);
 
 signals:
+    /**
+     * @brief Then user set signal
+     * 
+     */
     void user_set();
 
 private slots:
+    /**
+     * @brief On user set slot
+     * 
+     */
     void on_user_set();
 
 private:
-    Ui::SkipperPanel *ui;
-
+    /**
+     * @brief Action to be called, then user pressed logout button
+     * 
+     */
     void on_logout_requested();
 };
 
