@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['save_58',['save',['../classapparatus.html#a4f2165b5ee28137a1e52c5eca96260c4',1,'apparatus']]],
+  ['serialize_59',['serialize',['../classcargo__entity.html#aed559cae78b5054f361c75cd2d7534d4',1,'cargo_entity::serialize()'],['../classdpoint__entity.html#a6d8e6307901402a0eb139109917d0fd6',1,'dpoint_entity::serialize()'],['../class_i_serializable.html#ae8a810d40ebd609286ef85f52e19424b',1,'ISerializable::serialize()'],['../classstorage__entity.html#a4d37aa4724fd2561b313bb7366acc46a',1,'storage_entity::serialize()'],['../classuser__entity.html#a54d233b3cd648b08e5458279e005ca05',1,'user_entity::serialize()'],['../classvessel__entity.html#abce457a6f8414236ba1ecbff52bc025e',1,'vessel_entity::serialize()']]],
+  ['serialize_5fdata_60',['serialize_data',['../classauth__system.html#ac8e2aa711c29253233d082679c082131',1,'auth_system::serialize_data()'],['../classobject__system.html#a3383bcdbc92c97ba7a67365845709ce3',1,'object_system::serialize_data()']]],
+  ['set_5fcapacity_61',['set_capacity',['../classstorage__entity.html#a14300c45f18bd68cc35044ac7bd4bece',1,'storage_entity::set_capacity()'],['../classvessel__entity.html#aa626c7aa41c698778db9b2aaefb02321',1,'vessel_entity::set_capacity()']]],
+  ['set_5fdata_62',['set_data',['../class_cargo_view_model.html#a42e0da049713b353cd3246ba3c82c2b4',1,'CargoViewModel']]],
+  ['set_5fdpoint_63',['set_dpoint',['../class_delivery_point_edit_dialog.html#ab74db1b79f7d9b2df7defbec7f542211',1,'DeliveryPointEditDialog']]],
+  ['set_5fharbor_64',['set_harbor',['../classvessel__entity.html#a23b42796cb1894b5c6114aaa1e5935d4',1,'vessel_entity']]],
+  ['set_5fpassword_65',['set_password',['../classuser__entity.html#abec1917dfbae86a19bccc1490be16d7b',1,'user_entity']]],
+  ['set_5frole_66',['set_role',['../classuser__entity.html#a16512a79948e91a01f1061ef9e6c5c59',1,'user_entity']]],
+  ['set_5fskipper_67',['set_skipper',['../classvessel__entity.html#abb73f76373c00a14ba9e3174bed2c48d',1,'vessel_entity']]],
+  ['set_5fstorage_68',['set_storage',['../class_storage_edit_dialog.html#adb089511e1252b654aa9e7493dad1ad8',1,'StorageEditDialog']]],
+  ['set_5fstorages_69',['set_storages',['../classdpoint__entity.html#afadd13f679d5802935d3c6d320283bfb',1,'dpoint_entity']]],
+  ['set_5ftitle_70',['set_title',['../classdpoint__entity.html#a7eaf957dca1eab4c957e02fc9138132b',1,'dpoint_entity']]],
+  ['set_5fuser_71',['set_user',['../class_admin_panel.html#a858503fc711a0fd7000c8bf1f6ef5464',1,'AdminPanel::set_user()'],['../class_skipper_panel.html#a6f5158547fbe4b14b5bb9a690f5ef0d9',1,'SkipperPanel::set_user()'],['../class_user_edit_dialog.html#a9456c14652af1fd9392c219f0e48d37a',1,'UserEditDialog::set_user()']]],
+  ['set_5fvessel_72',['set_vessel',['../class_vessel_edit_dialog.html#a1f16680d3a57a09234ed3315b2497b01',1,'VesselEditDialog']]],
+  ['shutdown_73',['shutdown',['../classapparatus.html#a33f56a4305c796a07f1783fa56d4bd8b',1,'apparatus']]],
+  ['skipper_74',['skipper',['../classvessel__entity.html#a32c2dc97e9926fbc350ccd88ee125e25',1,'vessel_entity']]],
+  ['skipperpanel_75',['SkipperPanel',['../class_skipper_panel.html',1,'SkipperPanel'],['../class_skipper_panel.html#a4a32346ac2944e5ae2ca916021f3bae1',1,'SkipperPanel::SkipperPanel()']]],
+  ['storage_76',['storage',['../class_storage_edit_dialog.html#aa052cfb7dd217ea98609fab437b6a602',1,'StorageEditDialog']]],
+  ['storage_5fentity_77',['storage_entity',['../classstorage__entity.html',1,'storage_entity'],['../classstorage__entity.html#af850a5f678881ae95663dc0a7413dbd7',1,'storage_entity::storage_entity()'],['../classstorage__entity.html#adb7419ad72ac69a0070d845552776a94',1,'storage_entity::storage_entity(unsigned int capacity)']]],
+  ['storageeditdialog_78',['StorageEditDialog',['../class_storage_edit_dialog.html',1,'StorageEditDialog'],['../class_storage_edit_dialog.html#a54bdd27cc504a23540c78962c582bbaa',1,'StorageEditDialog::StorageEditDialog()']]],
+  ['storages_79',['storages',['../classdpoint__entity.html#a868c204a0587cd40e38787c89a41d14a',1,'dpoint_entity']]]
+];
